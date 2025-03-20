@@ -1,0 +1,78 @@
+* {
+  color: black;
+}
+body {
+  background-color: beige;
+  font-size: 1.1rem;
+
+  font-family: "Anton", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+h1 {
+  color: rgb(139, 29, 29);
+  font-size: 3rem;
+  text-transform: capitalize;
+  text-align: center;
+}
+
+h2 {
+  color: red;
+}
+
+h3 {
+  color: red;
+  font-size: 1.5rem;
+}
+
+.blue-color {
+  color: blue;
+}
+
+#outcome {
+  color: rgb(122, 122, 58);
+}
+
+#outcome {
+  color: yellowgreen;
+  border: 2px dashed rgb(156, 156, 109);
+}
+
+section {
+  text-align: center;
+  border: 1px solid red;
+}
+
+p {
+  text-align: center;
+}
+/* 
+
+curly brackets { } - groupes
+square brackets [ ] - js
+round brackets ( ) - js
+paranthesis < > - html
+semi colon ; - end a line
+colon : - property declaration
+syntax - rules of a language
+hyphen - - connect words
+asterik * - universal selector
+dot . - classes
+hash # - id
+
+specificity:
+style attribute
+id
+class/attribute
+elements
+
+css size units
+pixel - px
+REM - rem
+percentage - %
+viewport unites - vw, vh
+
+
+CAN MAKE A CLASS FONT AND ADD EVERYTHING AND PUT IT IN THE HTML
+ */
