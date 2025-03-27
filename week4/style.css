@@ -1,0 +1,38 @@
+body {
+  font-size: 1.1rem;
+  text-align: center;
+  margin: 0 auto;
+  /* makes content horizontal centered */
+}
+
+h1 {
+  font-size: 1.6rem;
+  /* rem allows to adjust font on default system styling */
+  font-weight: 700;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
+p {
+  width: 400px;
+  border: 1px solid crimson;
+  margin: 0 auto;
+  height: 200px;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-bottom: 3px dashed green;
+  background-color: beige;
+
+  /* min or max-height instead of height so it doesnt overflow */
+}
+
+.vcenter {
+  line-height: 170px;
+  /* height - top padding - bottom padding */
+}
+
+/* span is used for inline styling */
+span {
+  color: blue;
+  display: block;
+}
