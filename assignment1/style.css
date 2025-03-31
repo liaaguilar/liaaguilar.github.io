@@ -1,0 +1,79 @@
+/* Reset default margin and padding */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Base styles for body */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+  margin: 0;
+}
+
+/* Full-screen starting page */
+.start-screen {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #333; /* Background color for the start screen */
+}
+
+/* Text Container for the starting page */
+.text-container {
+  color: white;
+  position: absolute;
+  top: 8rem;
+  left: 2rem;
+  font-size: 4rem;
+  text-align: left;
+}
+
+.text-container h1 {
+  line-height: 1.2;
+}
+
+/* Scrolling Question Rectangles */
+.questions {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem; /* Space above the question boxes */
+}
+
+/* Common style for question boxes */
+.question-box {
+  width: 64vw; /* Takes up 2/3 of the screen width */
+  height: 60vh; /* Each rectangle takes up half of the screen height */
+  padding: 2rem;
+  background-color: #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  color: #333;
+  border: 1px solid #333;
+  box-sizing: border-box;
+  margin-bottom: 2rem; /* Consistent space between all boxes */
+}
+
+/* Left-aligned question box (First of each pair) */
+.left {
+  margin-left: 2rem; /* Adds space from the left side of the screen */
+}
+
+/* Right-aligned question box (Second of each pair) */
+.right {
+  margin-left: auto; /* Aligns this box to the right side */
+  margin-right: 1rem; /* Adds space from the right side of the screen */
+}
+
+/* Optional: Responsive for smaller screens */
+@media screen and (max-width: 768px) {
+  .question-box {
+    width: 90%; /* Takes up more space on smaller screens */
+  }
+}
