@@ -8,72 +8,111 @@
 /* Base styles for body */
 body {
   font-family: Arial, sans-serif;
-  background-color: #f5f5f5;
-  overflow-x: hidden; /* Prevent horizontal scrolling */
+  background-color: #708d93;
+  overflow-x: hidden;
   margin: 0;
 }
 
 /* Full-screen starting page */
-.start-screen {
+.startScreen {
   width: 100vw;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #333; /* Background color for the start screen */
+  background: url("photos/main.png") center/cover no-repeat;
+  position: relative;
 }
 
-/* Text Container for the starting page */
-.text-container {
+/* Text container for the start screen */
+.mainText {
   color: white;
   position: absolute;
-  top: 8rem;
-  left: 2rem;
-  font-size: 4rem;
+  left: 8rem;
+  top: 12rem;
+  font-size: 5rem;
   text-align: left;
 }
 
-.text-container h1 {
+.mainText h1 {
   line-height: 1.2;
 }
 
-/* Scrolling Question Rectangles */
+/* Question section */
 .questions {
   display: flex;
   flex-direction: column;
-  margin-top: 2rem; /* Space above the question boxes */
+  margin-top: 2rem;
+  padding-bottom: 4rem;
+
+  font-family: "Oswald", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
 }
 
-/* Common style for question boxes */
-.question-box {
-  width: 64vw; /* Takes up 2/3 of the screen width */
-  height: 60vh; /* Each rectangle takes up half of the screen height */
+/* Question boxes */
+.questionBox {
+  width: 64vw;
+  height: 60vh;
   padding: 2rem;
-  background-color: #ccc;
+  background-color: #9db8bd;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 2rem;
-  color: #333;
-  border: 1px solid #333;
-  box-sizing: border-box;
-  margin-bottom: 2rem; /* Consistent space between all boxes */
+  flex-direction: column;
+  justify-content: flex-start;
+  border: 1px solid #25262b;
+  margin-bottom: 2rem;
+  overflow: hidden;
 }
 
-/* Left-aligned question box (First of each pair) */
+/* Make the answer area scrollable */
+.answer {
+  font-size: 1.2rem;
+  color: #2c3638;
+  overflow-y: auto;
+  flex: 1;
+  padding-top: 1rem;
+  padding-right: 1rem;
+
+  font-family: "Lora", serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+}
+
+/* Ensure lists inside .answer show properly */
+.answer ul,
+.answer ol {
+  margin-left: 1.5rem;
+  margin-top: 0.5rem;
+  padding-left: 1rem;
+}
+
+/* Scrollbar styling (optional) */
+.answer::-webkit-scrollbar {
+  width: 8px;
+}
+.answer::-webkit-scrollbar-thumb {
+  background-color: #789095;
+  border-radius: 4px;
+}
+.answer::-webkit-scrollbar-thumb:hover {
+  background-color: #51676b;
+}
+
+/* Header inside box */
+.questionBox h2 {
+  font-size: 1.5rem;
+  color: #0a0908;
+  margin-bottom: 0.2rem;
+}
+
+/* Left and right alignment */
 .left {
-  margin-left: 2rem; /* Adds space from the left side of the screen */
+  margin-left: 2rem;
 }
 
-/* Right-aligned question box (Second of each pair) */
 .right {
-  margin-left: auto; /* Aligns this box to the right side */
-  margin-right: 1rem; /* Adds space from the right side of the screen */
-}
-
-/* Optional: Responsive for smaller screens */
-@media screen and (max-width: 768px) {
-  .question-box {
-    width: 90%; /* Takes up more space on smaller screens */
-  }
+  margin-left: auto;
+  margin-right: 1rem;
 }
