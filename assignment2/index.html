@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Music Video</title>
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <main>
+      <section class="main-screen">
+        <div class="main-content">
+          <h1 class="song-title">KARMA POLICE</h1>
+
+          <div class="video-section">
+            <video id="custom-video-player" disableRemotePlayback>
+              <source src="karmapolice.mp4" />
+              Your browser does not support the video tag.
+            </video>
+
+            <div class="custom-controls">
+              <button id="play-pause-btn">
+                <img
+                  id="play-pause-img"
+                  src="https://img.icons8.com/ios-glyphs/30/play--v1.png"
+                  alt="Play Button"
+                />
+              </button>
+              <div class="progress-bar" id="progress-bar">
+                <span id="progress-bar-fill"></span>
+              </div>
+            </div>
+
+            <div class="button-row-wrapper">
+              <div class="button-row">
+                <div class="chapter-buttons">
+                  <button data-time="0">Intro</button>
+                  <button data-time="70">Chorus</button>
+                  <button data-time="140">Breakdown</button>
+                  <button data-time="210">Climax</button>
+                  <button data-time="250">Fade Out</button>
+                </div>
+                <div class="utility-buttons">
+                  <button id="volume-down">
+                    <img
+                      src="https://img.icons8.com/ios-glyphs/30/low-volume.png"
+                      alt="Lower Volume"
+                    />
+                  </button>
+                  <button id="volume-up">
+                    <img
+                      src="https://img.icons8.com/ios-glyphs/30/high-volume--v1.png"
+                      alt="Increase Volume"
+                    />
+                  </button>
+                  <button id="fullscreen">
+                    <img
+                      src="https://img.icons8.com/ios-glyphs/30/full-screen--v1.png"
+                      alt="Fullscreen"
+                    />
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="interaction-section">
+        <div class="artist-section">
+          <img
+            src="https://i.guim.co.uk/img/media/c174daa9a205ff9ad68c155bad9003fd946bbf85/0_178_2048_1228/master/2048.jpg?width=465&dpr=1&s=none&crop=none"
+            alt="Radiohead"
+            class="artist-photo"
+          />
+          <div class="artist-bio">
+            <h3>Radiohead</h3>
+            <p>
+              Experimental British rock band formed in the early 1990s. Known
+              for blending rock, electronics, and haunting lyrical themes.
+            </p>
+            <div class="like-container">
+              <button id="like-btn" class="like-button">
+                <span id="like-icon">♡</span>
+                <span id="like-text">Like</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="engagement">
+          <div class="comment-box">
+            <textarea
+              id="comment-input"
+              placeholder="Add your comment..."
+            ></textarea>
+            <button id="add-comment-btn">Add Comment</button>
+            <div id="comments">
+              <div id="no-comments-placeholder">No Comments Yet...</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
