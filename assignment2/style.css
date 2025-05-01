@@ -1,9 +1,9 @@
 :root {
-  --bg-color: #f5f5f5;
-  --text-color: #222;
-  --accent-color: #1a1a1a;
-  --button-color: #e0e0e0;
-  --like-color: #ff4d4d;
+  --bg-color: #d8c4e6; /* Light lilac background */
+  --text-color: #1a001f; /* Dark almost-black purple for text */
+  --accent-color: #925abf; /* Medium bright purple for active elements */
+  --button-color: #bfa4d6; /* Soft muted purple for controls */
+  --like-color: #cc66ff; /* Bright pink-purple for likes */
 }
 
 * {
