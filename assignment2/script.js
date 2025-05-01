@@ -1,7 +1,7 @@
 // ============ VIDEO ============
 
 // gets the custom video player element and remove the default controls so i can add my own
-const video = document.querySelector("#custom-video-player");
+const video = document.querySelector("#video-player");
 video.removeAttribute("controls");
 
 // ============ PLAY/PAUSE ============
@@ -60,10 +60,10 @@ progressBarContainer.addEventListener("click", (e) => {
 // ============ CHAPTER SKIPS ============
 
 // gets all the chapter skip buttons from list
-const chapterButtons = document.querySelectorAll(".chapter-buttons button");
+const timeButtons = document.querySelectorAll(".time-buttons button");
 
 // listens for click for each button
-chapterButtons.forEach((btn) => {
+timeButtons.forEach((btn) => {
   btn.addEventListener("click", () => {
     const time = parseInt(btn.getAttribute("data-time")); // gets the value of data-time (from the html)
     skipTo(time); // skips to the time if clicked
@@ -100,6 +100,25 @@ const fullscreenBtn = document.querySelector("#fullscreen");
 // listens for click
 fullscreenBtn.addEventListener("click", () => {
   video.requestFullscreen(); // requests full screen
+});
+
+// =========== ARTIST ==========
+
+// gets the artist photo and artist name elements
+const artistPhoto = document.querySelector(".artist-photo");
+const artistName = document.querySelector(".artist-bio h3");
+
+// defines the search link
+const googleSearchLink = "https://www.google.com/search?q=Mira+Phase";
+
+// when the artist photo is clicked
+artistPhoto.addEventListener("click", () => {
+  window.open(googleSearchLink, "_blank"); // opens new window with google search
+});
+
+// when the artist name is clicked
+artistName.addEventListener("click", () => {
+  window.open(googleSearchLink, "_blank"); // opens new window with google search
 });
 
 // ============ LIKE BUTTON ============

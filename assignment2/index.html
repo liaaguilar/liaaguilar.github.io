@@ -3,26 +3,38 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Music Video</title>
+    <title>Music Video - Dreamwire</title>
+
     <link rel="stylesheet" href="reset.css" />
     <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anton&family=Lora:ital,wght@0,400..700;1,400..700&family=Oswald:wght@200..700&family=Special+Gothic+Expanded+One&display=swap"
+      rel="stylesheet"
+    />
   </head>
+
+  <!-- i basically wanted it to have 2 sections: a main section and an interaction section. since it was a music video player,
+    i wanted the music video to be the forefront of the main section, taking up majority of the space, with the song title and utility buttons
+    beaneath it. this made it more immersive, especially since i added the fullscreen function too -->
   <body>
     <main>
       <section class="main-screen">
-        <div class="main-content">
+        <header class="main-content">
           <h1 class="song-title">dreamwire</h1>
 
-          <div class="video-section">
-            <video id="custom-video-player" disableRemotePlayback>
+          <section class="video-section">
+            <video id="video-player" disableRemotePlayback>
               <source
                 src="https://thelongesthumstore.sgp1.cdn.digitaloceanspaces.com/IM-2250/miac.mp4"
               />
               Your browser does not support the video tag.
             </video>
 
-            <div class="custom-controls">
+            <div class="controls">
               <button id="play-pause-btn">
                 <img
                   id="play-pause-img"
@@ -35,15 +47,14 @@
               </div>
             </div>
 
-            <div class="button-row-wrapper">
+            <div class="button-row-wrap">
               <div class="button-row">
-                <div class="chapter-buttons">
+                <nav class="time-buttons">
                   <button data-time="0">Intro</button>
-                  <button data-time="70">Chorus</button>
-                  <button data-time="140">Breakdown</button>
-                  <button data-time="210">Climax</button>
-                  <button data-time="250">Fade Out</button>
-                </div>
+                  <button data-time="40">Ambient Rise</button>
+                  <button data-time="130">Climax</button>
+                  <button data-time="210">Fade Out</button>
+                </nav>
                 <div class="utility-buttons">
                   <button id="volume-down">
                     <img
@@ -66,44 +77,44 @@
                 </div>
               </div>
             </div>
-          </div>
-        </div>
+          </section>
+        </header>
       </section>
 
+      <!-- then when you scrolled, you got to the interaction section, where you can find information about the artist, a short 
+ biography, the ability to like the song, as well as a comment section! i also made it so when you clicked on the artist
+ photo or their name, it would take you to their website. obviously since it isnt a real band, i just took it to the google search of the fake name -->
       <section class="interaction-section">
-        <div class="artist-section">
-          <img
-            src="https://i.guim.co.uk/img/media/c174daa9a205ff9ad68c155bad9003fd946bbf85/0_178_2048_1228/master/2048.jpg?width=465&dpr=1&s=none&crop=none"
-            alt="Radiohead"
-            class="artist-photo"
-          />
-          <div class="artist-bio">
+        <article class="artist-section">
+          <img src="miraphase.png" alt="Mira Phase" class="artist-photo" />
+          <section class="artist-bio">
             <h3>Mira Phase</h3>
             <p>
-              Experimental British rock band formed in the early 1990s. Known
-              for blending rock, electronics, and haunting lyrical themes.
+              Atmospheric electronic artist weaving glitch, dream pop, and
+              ambient textures into vivid soundscapes.
             </p>
+
             <div class="like-container">
               <button id="like-btn" class="like-button">
                 <span id="like-icon">♡</span>
                 <span id="like-text">Like</span>
               </button>
             </div>
-          </div>
-        </div>
+          </section>
+        </article>
 
-        <div class="engagement">
-          <div class="comment-box">
+        <section class="engagement">
+          <section class="comment-box">
             <textarea
               id="comment-input"
               placeholder="Add your comment..."
             ></textarea>
             <button id="add-comment-btn">Add Comment</button>
-            <div id="comments">
+            <section id="comments">
               <div id="no-comments-placeholder">No Comments Yet...</div>
-            </div>
-          </div>
-        </div>
+            </section>
+          </section>
+        </section>
       </section>
     </main>
   </body>

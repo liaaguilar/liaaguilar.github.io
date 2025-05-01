@@ -1,26 +1,31 @@
-:root {
-  --bg-color: #d8c4e6; /* Light lilac background */
-  --text-color: #1a001f; /* Dark almost-black purple for text */
-  --accent-color: #925abf; /* Medium bright purple for active elements */
-  --button-color: #bfa4d6; /* Soft muted purple for controls */
-  --like-color: #cc66ff; /* Bright pink-purple for likes */
-}
-
+/* i tried to make everything look cohesive to that colors on the video player! and made sure that the contrast was high enough between
+the background and the text */
+/* ================== GLOBAL ================== */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
+/* ================== STYLING ================== */
 body {
-  font-family: Arial, sans-serif;
-  background-color: var(--bg-color);
-  color: var(--text-color);
+  background-color: #b08eb0;
+  color: #230129;
   line-height: 1.6;
   padding: 20px;
   overflow-x: hidden;
+  font-family: "IBM Plex Serif", serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
+.song-title {
+  font-family: "Special Gothic Expanded One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* ================== PAGE LAYOUT ================== */
 main {
   width: 100%;
 }
@@ -45,37 +50,38 @@ main {
 }
 
 .song-title {
-  font-size: 2rem;
+  font-size: 3rem;
   margin-bottom: 2px;
 }
 
+/* ================== VIDEO PLAYER ================== */
 .video-section {
   max-width: 800px;
   width: 100%;
 }
 
-#custom-video-player {
+#video-player {
   width: 100%;
-  background: black;
   border-radius: 12px;
 }
 
-.custom-controls {
+/* ================== VIDEO CONTROLS ================== */
+.controls {
   margin-top: 10px;
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-.custom-controls button {
-  background-color: var(--button-color);
+.controls button {
+  background-color: #5a2b70;
   border: none;
   padding: 8px;
   cursor: pointer;
   border-radius: 6px;
 }
 
-.custom-controls img {
+.controls img {
   width: 24px;
   height: 24px;
 }
@@ -83,7 +89,7 @@ main {
 .progress-bar {
   flex-grow: 1;
   height: 8px;
-  background-color: #ccc;
+  background-color: #8e708e;
   border-radius: 4px;
   overflow: hidden;
   cursor: pointer;
@@ -92,11 +98,12 @@ main {
 #progress-bar-fill {
   display: block;
   height: 100%;
-  background-color: var(--accent-color);
+  background-color: #5a2b70;
   width: 0;
 }
 
-.button-row-wrapper {
+/* ================== BUTTON ROW ================== */
+.button-row-wrap {
   max-width: 85%;
   margin: 0 auto;
 }
@@ -110,22 +117,22 @@ main {
   margin-top: 20px;
 }
 
-.chapter-buttons {
+.time-buttons {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
 }
 
-.chapter-buttons button {
+.time-buttons button {
   padding: 6px 12px;
   border: none;
-  background-color: var(--accent-color);
-  color: white;
+  background-color: #5a2b70;
+  color: #ce9ed7;
   border-radius: 4px;
   cursor: pointer;
 }
 
-.chapter-buttons button:hover {
+.time-buttons button:hover {
   opacity: 0.8;
 }
 
@@ -135,7 +142,7 @@ main {
 }
 
 .utility-buttons button {
-  background-color: var(--button-color);
+  background-color: #5a2b70;
   border: none;
   padding: 8px;
   cursor: pointer;
@@ -147,14 +154,13 @@ main {
   height: 24px;
 }
 
-/* Interaction Section */
-
+/* ================== INTERACTION SECTION ================== */
 .interaction-section {
   height: 100vh;
   display: flex;
   flex-direction: column;
   padding: 40px 20px;
-  border-top: 2px solid #ccc;
+  border-top: 2px solid #230129;
   max-width: 1000px;
   margin: 0 auto;
 }
@@ -174,6 +180,14 @@ main {
   border-radius: 50%;
   position: relative;
   top: -30px;
+  cursor: pointer;
+}
+
+h3 {
+  font-family: "Special Gothic Expanded One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  cursor: pointer;
 }
 
 .artist-bio {
@@ -196,25 +210,26 @@ main {
   padding: 6px 12px;
   font-weight: bold;
   font-size: 1rem;
-  border: 2px solid grey;
+  border: 2px solid #8e708e;
   border-radius: 999px;
   background-color: transparent;
-  color: grey;
+  color: #8e708e;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .like-button:hover {
-  border-color: red;
-  color: red;
+  border-color: #5a2b70;
+  color: #5a2b70;
 }
 
 .like-button.liked {
-  background-color: red;
-  border-color: red;
-  color: white;
+  background-color: #5a2b70;
+  border-color: #5a2b70;
+  color: #ce9ed7;
 }
 
+/* ================== COMMENTS AREA ================== */
 .engagement {
   display: flex;
   flex-direction: column;
@@ -234,15 +249,22 @@ main {
   width: 100%;
   padding: 10px;
   font-size: 1rem;
-  border: 1px solid #ccc;
+  border: 1px solid #8e708e;
   border-radius: 6px;
   resize: vertical;
   min-height: 60px;
+  background-color: #230129;
+  color: #edcedf;
+}
+
+.comment-box textarea::placeholder {
+  color: #8e708e;
+  opacity: 1;
 }
 
 .comment-box button {
-  background-color: var(--accent-color);
-  color: white;
+  background-color: #5a2b70;
+  color: #ce9ed7;
   padding: 8px 16px;
   border: none;
   border-radius: 6px;
@@ -256,7 +278,7 @@ main {
 }
 
 #comments {
-  background-color: #eee;
+  background-color: #e9c9ef;
   padding: 10px;
   border-radius: 6px;
   overflow-y: auto;
@@ -270,18 +292,19 @@ main {
 }
 
 #comments::-webkit-scrollbar-thumb {
-  background-color: #bbb;
+  background-color: #8e708e;
   border-radius: 4px;
 }
 
 #comments::-webkit-scrollbar-thumb:hover {
-  background-color: #999;
+  background-color: #5a2b70;
+  cursor: pointer;
 }
 
 #comments p {
   background: #fff;
   padding: 10px;
-  border-left: 4px solid var(--accent-color);
+  border-left: 4px solid #5a2b70;
   margin-bottom: 10px;
   border-radius: 4px;
 }
@@ -291,7 +314,7 @@ main {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: #777;
+  color: #513a51;
   font-style: italic;
   opacity: 0.8;
   pointer-events: none;
