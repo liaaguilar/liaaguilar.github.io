@@ -1,0 +1,330 @@
+/* reset + global styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+html {
+  background: #121212; /* dark theme background */
+  color: #f0f0f0; /* light text for contrast */
+  overflow: hidden; /* prevent scrollbars */
+}
+
+/* main screen layout */
+main#main-screen {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 100px; /* space for footer */
+  background-color: #121212;
+}
+
+/* background image rectangles behind the title */
+.background-container {
+  position: absolute;
+  display: flex;
+  gap: 10px;
+  width: 80%;
+  height: 50%;
+  z-index: 0;
+  overflow: hidden; /* prevent overflow of large images */
+}
+
+.background-box {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+.background-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* name overlay */
+.my-name {
+  position: relative;
+  z-index: 2;
+  font-size: 9vw;
+  font-weight: 400;
+  font-style: normal;
+  font-family: "Special Gothic Expanded One", sans-serif;
+  color: #f0f0f0;
+  text-align: center;
+}
+
+/* animation rectangle that grows upward */
+.footer-animation {
+  position: fixed;
+  z-index: 9999;
+  color: #121212;
+  font-weight: bold;
+  font-size: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+  transition: none;
+}
+
+/* animated star icons */
+.star {
+  position: absolute;
+  transform-origin: center;
+  transform: translate(-50%, -50%);
+}
+
+.star img {
+  width: 12vw;
+  max-width: 200px;
+  min-width: 30px;
+  height: auto;
+  transform-origin: center;
+  display: block;
+  /* filters make the stars off-white yellowish */
+  filter: brightness(0) saturate(100%) invert(63%) sepia(11%) saturate(571%)
+    hue-rotate(2deg) brightness(90%) contrast(90%);
+}
+
+.star img.star1 {
+  width: 14vw;
+}
+.star img.star2 {
+  width: 11vw;
+}
+.star img.star3 {
+  width: 16vw;
+}
+
+/* footer container holding nav icons */
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 100px;
+  display: flex;
+  background: #1e1e1e;
+  box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.3);
+  z-index: 10;
+}
+
+/* each clickable icon section in footer */
+.footer-icons {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+  overflow: visible;
+  cursor: pointer;
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+  color: #9a9580;
+  transition: transform 0.2s ease;
+}
+
+.footer-icons:hover .icon {
+  transform: scale(1.4);
+}
+
+/* hover label animation */
+.labels {
+  position: absolute;
+  bottom: 100%;
+  height: 0px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  transition: height 0.3s ease;
+}
+
+.labels span {
+  opacity: 0;
+  font-size: 1rem;
+  color: #121212;
+  font-weight: bold;
+  transition: opacity 0.2s ease 0.1s;
+}
+
+.footer-icons:hover .labels {
+  height: 50px;
+}
+
+.footer-icons:hover .labels span {
+  opacity: 1;
+}
+
+/* individual section hover colors */
+.footer-icons:nth-child(1):hover {
+  background-color: #e53935;
+}
+.footer-icons:nth-child(1):hover .labels {
+  background-color: #e53935;
+}
+.footer-icons:nth-child(2):hover {
+  background-color: #fb8c00;
+}
+.footer-icons:nth-child(2):hover .labels {
+  background-color: #fb8c00;
+}
+.footer-icons:nth-child(3):hover {
+  background-color: #fdd835;
+}
+.footer-icons:nth-child(3):hover .labels {
+  background-color: #fdd835;
+}
+.footer-icons:nth-child(4):hover {
+  background-color: #1e88e5;
+}
+.footer-icons:nth-child(4):hover .labels {
+  background-color: #1e88e5;
+}
+.footer-icons:nth-child(5):hover {
+  background-color: #8e24aa;
+}
+.footer-icons:nth-child(5):hover .labels {
+  background-color: #8e24aa;
+}
+
+/* persistent highlight for active icon */
+.footer-icons.active-color:nth-child(1),
+.footer-icons.active-color:nth-child(1) .labels {
+  background-color: #e53935;
+}
+.footer-icons.active-color:nth-child(2),
+.footer-icons.active-color:nth-child(2) .labels {
+  background-color: #fb8c00;
+}
+.footer-icons.active-color:nth-child(3),
+.footer-icons.active-color:nth-child(3) .labels {
+  background-color: #fdd835;
+}
+.footer-icons.active-color:nth-child(4),
+.footer-icons.active-color:nth-child(4) .labels {
+  background-color: #1e88e5;
+}
+.footer-icons.active-color:nth-child(5),
+.footer-icons.active-color:nth-child(5) .labels {
+  background-color: #8e24aa;
+}
+
+/* fade out background after section change */
+.footer-icons.fading-out {
+  transition: background-color 0.6s ease;
+  background-color: transparent !important;
+}
+
+.footer-icons.fading-out .labels {
+  background-color: transparent !important;
+}
+
+/* content section styling */
+.content-page {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 100px);
+  padding: 100px 40px 40px;
+  background: #181818;
+  z-index: 5;
+  box-sizing: border-box;
+  overflow-y: auto;
+  animation: fadeIn 0.5s ease forwards;
+  font-family: "IBM Plex Serif", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.content-page h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #e84242;
+}
+
+.content-page p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+  color: #ddd;
+}
+
+/* back button style */
+.back-button {
+  position: fixed;
+  top: 30px;
+  left: 30px;
+  background: none;
+  border: 2px solid #e84242;
+  color: #e84242;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 1rem;
+  z-index: 15;
+  transition: background 0.2s ease;
+}
+
+.back-button:hover {
+  background: #e84242;
+  color: #121212;
+}
+
+/* fade-in effect for main screen */
+#main-screen.fade-in {
+  animation: fadeInMain 0.5s ease forwards;
+}
+
+@keyframes fadeInMain {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* fade-out animation for content sections */
+.content-page.fade-out {
+  animation: fadeOutPage 0.4s ease forwards;
+}
+
+@keyframes fadeOutPage {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
