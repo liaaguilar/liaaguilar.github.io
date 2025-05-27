@@ -20,35 +20,40 @@
     <!-- main screen -->
     <main id="main-screen">
       <div class="background-container">
-        <div class="background-box">
+        <div class="background-box" data-project="project1">
           <img
             src="https://i.pinimg.com/736x/8d/cc/26/8dcc26befe24616bdf09fd02cdf24ea9.jpg"
             alt=""
           />
+          <div class="rectangle-overlay"><span>Project One</span></div>
         </div>
-        <div class="background-box">
+        <div class="background-box" data-project="project2">
           <img
             src="https://i.pinimg.com/736x/67/88/40/678840ba1855b66017aeeb32d99f654d.jpg"
             alt=""
           />
+          <div class="rectangle-overlay"><span>Project Two</span></div>
         </div>
-        <div class="background-box">
+        <div class="background-box" data-project="project3">
           <img
             src="https://i.pinimg.com/736x/52/f7/b9/52f7b9482f1f94f3946d650a6359fc0b.jpg"
             alt=""
           />
+          <div class="rectangle-overlay"><span>Project Three</span></div>
         </div>
-        <div class="background-box">
+        <div class="background-box" data-project="project4">
           <img
             src="https://i.pinimg.com/736x/03/7b/53/037b53510b686c0f1465640f3b749ca9.jpg"
             alt=""
           />
+          <div class="rectangle-overlay"><span>Project Four</span></div>
         </div>
       </div>
 
+      <!-- big name -->
       <h1 class="my-name">LIA AGUILAR</h1>
 
-      <!-- stars -->
+      <!-- animated stars -->
       <div
         class="star"
         style="
@@ -72,7 +77,7 @@
       <div
         class="star"
         style="
-          bottom: -10%;
+          bottom: -2%;
           left: 60%;
           transform: translate(-50%, -50%) rotate(45deg);
         "
@@ -85,12 +90,7 @@
     <footer>
       <div class="footer-icons" data-section="about">
         <div class="labels"><span>About</span></div>
-        <svg
-          class="icon"
-          viewBox="0 0 32 32"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="currentColor"
-        >
+        <svg class="icon" viewBox="0 0 32 32" fill="currentColor">
           <path
             d="M16 15.503A5.041 5.041 0 1 0 16 5.42a5.041 5.041 0 0 0 0 10.083zm0 2.215c-6.703 0-11 3.699-11 5.5v3.363h22v-3.363c0-2.178-4.068-5.5-11-5.5z"
           />
@@ -99,12 +99,7 @@
 
       <div class="footer-icons" data-section="projects">
         <div class="labels"><span>Projects</span></div>
-        <svg
-          class="icon"
-          viewBox="0 0 16 16"
-          fill="currentColor"
-          xmlns="http://www.w3.org/2000/svg"
-        >
+        <svg class="icon" viewBox="0 0 16 16" fill="currentColor">
           <path
             fill-rule="evenodd"
             clip-rule="evenodd"
@@ -115,12 +110,7 @@
 
       <div class="footer-icons" data-section="education">
         <div class="labels"><span>Education</span></div>
-        <svg
-          class="icon"
-          viewBox="0 -64 640 640"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="currentColor"
-        >
+        <svg class="icon" viewBox="0 -64 640 640" fill="currentColor">
           <path
             d="M622.34 153.2L343.4 67.5c-15.2-4.67-31.6-4.67-46.79 0L17.66 153.2c-23.54 7.23-23.54 38.36 0 45.59l48.63 14.94c-10.67 13.19-17.23 29.28-17.88 46.9C38.78 266.15 32 276.11 32 288c0 10.78 5.68 19.85 13.86 25.65L20.33 428.53C18.11 438.52 25.71 448 35.94 448h56.11c10.24 0 17.84-9.48 15.62-19.47L82.14 313.65C90.32 307.85 96 298.78 96 288c0-11.57-6.47-21.25-15.66-26.87.76-15.02 8.44-28.3 20.69-36.72L296.6 284.5c9.06 2.78 26.44 6.25 46.79 0l278.95-85.7c23.55-7.24 23.55-38.36 0-45.6zM352.79 315.09c-28.53 8.76-52.84 3.92-65.59 0l-145.02-44.55L128 384c0 35.35 85.96 64 192 64s192-28.65 192-64l-14.18-113.47-145.03 44.56z"
           />
@@ -129,12 +119,7 @@
 
       <div class="footer-icons" data-section="experience">
         <div class="labels"><span>Experience</span></div>
-        <svg
-          class="icon"
-          viewBox="0 0 64 64"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="currentColor"
-        >
+        <svg class="icon" viewBox="0 0 64 64" fill="currentColor">
           <g>
             <rect x="14" y="36" width="4" height="10" />
             <path
@@ -150,12 +135,7 @@
 
       <div class="footer-icons" data-section="contact">
         <div class="labels"><span>Contact</span></div>
-        <svg
-          class="icon"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="currentColor"
-        >
+        <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
           <path
             d="M22,5V9L12,13,2,9V5A1,1,0,0,1,3,4H21A1,1,0,0,1,22,5ZM2,11.154V19a1,1,0,0,0,1,1H21a1,1,0,0,0,1-1V11.154l-10,4Z"
           />
@@ -167,31 +147,445 @@
     <div id="about" class="content-page">
       <button class="back-button">← Back</button>
       <h1>About</h1>
-      <p>about section content here.</p>
+
+      <div class="about-container">
+        <div class="about-image">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Radiohead-Osheaga.jpg/440px-Radiohead-Osheaga.jpg"
+            alt="Radiohead"
+          />
+        </div>
+        <div class="about-text">
+          <p>
+            Radiohead is a British rock band known for constantly reinventing
+            their sound, blending experimental textures with deeply emotional
+            songwriting. With iconic albums like <em>OK Computer</em>,
+            <em>Kid A</em>, and <em>In Rainbows</em>, their work continues to
+            influence musicians and designers alike. Their innovative approach
+            to both music and visuals represents a commitment to artistic
+            integrity, exploration, and pushing the boundaries of conventional
+            media.
+          </p>
+        </div>
+      </div>
     </div>
 
     <div id="projects" class="content-page">
-      <button class="back-button">← back</button>
-      <h1>Projects</h1>
-      <p>projects section content here.</p>
+      <button class="back-button">← Back</button>
+      <h1 class="section-title">Projects</h1>
+
+      <div class="carousel-container">
+        <button class="arrow left-arrow">
+          <svg
+            class="arrow-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M11.7071 4.29289C12.0976 4.68342 12.0976 5.31658 11.7071 5.70711L6.41421 11H20C20.5523 11 21 11.4477 21 12C21 12.5523 20.5523 13 20 13H6.41421L11.7071 18.2929C12.0976 18.6834 12.0976 19.3166 11.7071 19.7071C11.3166 20.0976 10.6834 20.0976 10.2929 19.7071L3.29289 12.7071C3.10536 12.5196 3 12.2652 3 12C3 11.7348 3.10536 11.4804 3.29289 11.2929L10.2929 4.29289C10.6834 3.90237 11.3166 3.90237 11.7071 4.29289Z"
+            />
+          </svg>
+        </button>
+
+        <div class="carousel-track">
+          <!-- Project 1 -->
+          <div class="carousel-slide" data-target="project1">
+            <div class="project-image">
+              <img
+                src="https://i.pinimg.com/736x/13/1c/25/131c252c4e65ce8a1d60b9c6623ef3c2.jpg"
+                alt="Project 1"
+              />
+            </div>
+            <div class="project-text">
+              <h2>Project One</h2>
+              <p>This is a short description of the first project.</p>
+            </div>
+          </div>
+
+          <!-- Project 2 -->
+          <div class="carousel-slide" data-target="project2">
+            <div class="project-image">
+              <img
+                src="https://i.pinimg.com/736x/8b/5b/c7/8b5bc71fd9bb3b54d1af99a1d68dba92.jpg"
+                alt="Project 2"
+              />
+            </div>
+            <div class="project-text">
+              <h2>Project Two</h2>
+              <p>
+                Description for project two goes here. You can change these
+                images and descriptions anytime.
+              </p>
+            </div>
+          </div>
+
+          <!-- Project 3 -->
+          <div class="carousel-slide" data-target="project3">
+            <div class="project-image">
+              <img
+                src="https://i.pinimg.com/736x/be/93/33/be93334ba5dcb41413c6c61258e4e5e7.jpg"
+                alt="Project 3"
+              />
+            </div>
+            <div class="project-text">
+              <h2>Project Three</h2>
+              <p>
+                Third project blurb goes here. Each image is pulled from
+                Unsplash and can be swapped later.
+              </p>
+            </div>
+          </div>
+
+          <!-- Project 4 -->
+          <div class="carousel-slide" data-target="project4">
+            <div class="project-image">
+              <img
+                src="https://i.pinimg.com/736x/91/a3/71/91a371798a16e988b79239cbb0e1a472.jpg"
+                alt="Project 4"
+              />
+            </div>
+            <div class="project-text">
+              <h2>Project Four</h2>
+              <p>
+                Brief text for project four. Layout remains consistent with
+                About and Education sections.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <button class="arrow right-arrow">
+          <svg
+            class="arrow-icon flipped"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M11.7071 4.29289C12.0976 4.68342 12.0976 5.31658 11.7071 5.70711L6.41421 11H20C20.5523 11 21 11.4477 21 12C21 12.5523 20.5523 13 20 13H6.41421L11.7071 18.2929C12.0976 18.6834 12.0976 19.3166 11.7071 19.7071C11.3166 20.0976 10.6834 20.0976 10.2929 19.7071L3.29289 12.7071C3.10536 12.5196 3 12.2652 3 12C3 11.7348 3.10536 11.4804 3.29289 11.2929L10.2929 4.29289C10.6834 3.90237 11.3166 3.90237 11.7071 4.29289Z"
+            />
+          </svg>
+        </button>
+      </div>
+
+      <div class="carousel-indicators">
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </div>
     </div>
 
     <div id="education" class="content-page">
-      <button class="back-button">← back</button>
+      <button class="back-button">← Back</button>
       <h1>Education</h1>
-      <p>education section content here.</p>
+
+      <div class="education-container">
+        <!-- Repeat this block 5 times with different images/text if needed -->
+        <div class="education-entry">
+          <div class="edu-image">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/en/3/32/Oxford_University_Coat_Of_Arms.svg"
+              alt="School Logo"
+            />
+          </div>
+          <div class="edu-text">
+            <h2>Oxford University</h2>
+            <p>
+              Radiohead received their honorary degrees in musicology from this
+              fictional version of Oxford. It was here they studied advanced
+              glitch textures, reverb theology, and the philosophy of melancholy
+              chords.
+            </p>
+          </div>
+        </div>
+
+        <hr />
+
+        <div class="education-entry">
+          <div class="edu-image">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Logo_of_the_Royal_College_of_Music.svg"
+              alt="School Logo"
+            />
+          </div>
+          <div class="edu-text">
+            <h2>Royal College of Sound</h2>
+            <p>
+              Thom Yorke led weekly seminars on “Emotional Resonance in F#
+              Minor.” Coursework involved crying to *Pyramid Song* and building
+              modular synth patches in total darkness.
+            </p>
+          </div>
+        </div>
+
+        <hr />
+
+        <div class="education-entry">
+          <div class="edu-image">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/8/84/Berklee_College_of_Music_logo.svg"
+              alt="School Logo"
+            />
+          </div>
+          <div class="edu-text">
+            <h2>Berklee College of Experimental Harmony</h2>
+            <p>
+              Specialized in polyrhythms, spectral delays, and deconstructing
+              chord progressions. Students are trained to layer sadness over
+              more sadness.
+            </p>
+          </div>
+        </div>
+
+        <hr />
+
+        <div class="education-entry">
+          <div class="edu-image">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/e/e1/California_Institute_of_the_Arts_logo.svg"
+              alt="School Logo"
+            />
+          </div>
+          <div class="edu-text">
+            <h2>CalArts (Ghost Division)</h2>
+            <p>
+              Radiohead’s haunting minimalism was refined here. Coursework
+              included “Ambient Anxiety” and “Reverse Reverb Rituals.” Final
+              exams were whispered through contact mics.
+            </p>
+          </div>
+        </div>
+
+        <hr />
+
+        <div class="education-entry">
+          <div class="edu-image">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/en/1/1e/University_of_Reykjav%C3%ADk_logo.svg"
+              alt="School Logo"
+            />
+          </div>
+          <div class="edu-text">
+            <h2>University of Reykjavík</h2>
+            <p>
+              For their winter semester, the band moved to Iceland to explore
+              coldwave theory, arctic ambience, and working with whale bone
+              percussion.
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div id="experience" class="content-page">
-      <button class="back-button">← back</button>
+      <button class="back-button">← Back</button>
       <h1>Experience</h1>
-      <p>experience section content here.</p>
+
+      <div class="experience-container">
+        <div class="experience-entry">
+          <h2>Audio Technician – Glastonbury Festival</h2>
+          <ul>
+            <li>
+              Ran on-stage audio checks for artists across multiple stages.
+            </li>
+            <li>Assisted with modular synth setup and delay loop testing.</li>
+            <li>Provided technical support under tight changeover windows.</li>
+          </ul>
+        </div>
+
+        <hr />
+
+        <div class="experience-entry">
+          <h2>Interactive Media Intern – XL Recordings</h2>
+          <ul>
+            <li>
+              Designed micro-interactions and visuals for album campaigns.
+            </li>
+            <li>
+              Helped prototype a live visualizer for *Everything In Its Right
+              Place*.
+            </li>
+            <li>
+              Worked closely with front-end developers and motion designers.
+            </li>
+          </ul>
+        </div>
+
+        <hr />
+
+        <div class="experience-entry">
+          <h2>Sound Design Assistant – BBC Radiophonic Workshop</h2>
+          <ul>
+            <li>
+              Developed abstract soundscapes for film and podcast projects.
+            </li>
+            <li>
+              Created granular sound textures inspired by Radiohead’s *Kid A*.
+            </li>
+            <li>Recorded and processed custom foley for experimental work.</li>
+          </ul>
+        </div>
+
+        <hr />
+
+        <div class="experience-entry">
+          <h2>Installation Artist – Tate Modern</h2>
+          <ul>
+            <li>Designed and installed an interactive audio-visual piece.</li>
+            <li>
+              Visitors experienced sound-reactive lighting tied to album
+              aesthetics.
+            </li>
+            <li>
+              Coordinated AV rig setup and projection mapping for the exhibit.
+            </li>
+          </ul>
+        </div>
+
+        <hr />
+
+        <div class="experience-entry">
+          <h2>Freelance Audio Visual Designer</h2>
+          <ul>
+            <li>Produced live visual sets for indie musicians and DJs.</li>
+            <li>Built visuals in TouchDesigner and After Effects.</li>
+            <li>
+              Specialized in audio-reactive typography and glitch effects.
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
 
     <div id="contact" class="content-page">
-      <button class="back-button">← back</button>
+      <button class="back-button">← Back</button>
       <h1>Contact</h1>
-      <p>contact section content here.</p>
+
+      <div class="contact-container">
+        <!-- Left side: info and icons -->
+        <div class="contact-info">
+          <p>
+            For any enquires, questions, or anything at all, feel free to reach
+            out to me in any of my contact links below! Alternatively, you can
+            fill out the form and I will get back to you as soon as possible!
+          </p>
+
+          <ul class="contact-list">
+            <li>
+              <img class="contact-icon" src="phone.svg" alt="Phone icon" />
+              <span>+61 400 000 000</span>
+            </li>
+            <li>
+              <img class="contact-icon" src="email2.svg" alt="Email icon" />
+              <span>lia.aguilar@email.com</span>
+            </li>
+            <li>
+              <img class="contact-icon" src="insta.svg" alt="Instagram icon" />
+              <span>@lia.visuals</span>
+            </li>
+            <li>
+              <img
+                class="contact-icon"
+                src="linkedin.svg"
+                alt="LinkedIn icon"
+              />
+              <span>linkedin.com/in/liaaguilar</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Right side: form -->
+        <form class="contact-form">
+          <div class="name-fields">
+            <input type="text" placeholder="First" />
+            <input type="text" placeholder="Last" />
+          </div>
+          <input type="email" placeholder="Email" />
+          <textarea placeholder="Message"></textarea>
+          <button type="submit">SUBMIT</button>
+        </form>
+      </div>
+    </div>
+    <!-- Project 1 Page -->
+    <div id="project1" class="content-page">
+      <button class="back-button">← Back</button>
+      <h1>PROJECT ONE</h1>
+      <div class="project-detail-container">
+        <div class="project-detail-image">
+          <img
+            src="https://i.pinimg.com/736x/13/1c/25/131c252c4e65ce8a1d60b9c6623ef3c2.jpg"
+            alt="Project 1"
+          />
+        </div>
+        <p>
+          This project explores themes of identity through interactive visuals
+          and sound. The core mechanic revolves around user presence and dynamic
+          visuals that evolve in real-time.
+        </p>
+      </div>
+    </div>
+
+    <!-- Project 2 Page -->
+    <div id="project2" class="content-page">
+      <button class="back-button">← Back</button>
+      <h1>PROJECT TWO</h1>
+      <div class="project-detail-container">
+        <div class="project-detail-image">
+          <img
+            src="https://i.pinimg.com/736x/8b/5b/c7/8b5bc71fd9bb3b54d1af99a1d68dba92.jpg"
+            alt="Project 2"
+          />
+        </div>
+        <p>
+          An experimental interface that transforms user gestures into
+          generative patterns. Designed for gallery installations and web-based
+          interaction studies.
+        </p>
+      </div>
+    </div>
+
+    <!-- Project 3 Page -->
+    <div id="project3" class="content-page">
+      <button class="back-button">← Back</button>
+      <h1>PROJECT THREE</h1>
+      <div class="project-detail-container">
+        <div class="project-detail-image">
+          <img
+            src="https://i.pinimg.com/736x/be/93/33/be93334ba5dcb41413c6c61258e4e5e7.jpg"
+            alt="Project 3"
+          />
+        </div>
+        <p>
+          A short film augmented by sound-reactive overlays. Explores emotional
+          memory through ambient audio layers and low-fidelity visual
+          distortion.
+        </p>
+      </div>
+    </div>
+
+    <!-- Project 4 Page -->
+    <div id="project4" class="content-page">
+      <button class="back-button">← Back</button>
+      <h1>PROJECT FOUR</h1>
+      <div class="project-detail-container">
+        <div class="project-detail-image">
+          <img
+            src="https://i.pinimg.com/736x/91/a3/71/91a371798a16e988b79239cbb0e1a472.jpg"
+            alt="Project 4"
+          />
+        </div>
+        <p>
+          A collaborative browser-based tool that maps user-generated data into
+          spatial poetry. Each session results in a unique generative structure
+          that visualizes digital intimacy.
+        </p>
+      </div>
     </div>
   </body>
 </html>
