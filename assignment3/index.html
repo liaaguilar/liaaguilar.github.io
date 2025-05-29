@@ -1,9 +1,15 @@
+<!-- THIS IS MY ASSIGNMENT!!! i admit i went a bit overboard because i do want to use this as a portfolio in the future.
+ i did get quite a bit of help from my family because they all code, and did get some help from chat gpt especially with errors 
+ and features i couldnt figure out how to fix or change. im just saying this because i know that i couldnt have done it alone and
+ i just want to acknowledge the things that helped me, especially my mom who i made sit through me with half of this and had to
+ listen to all my questions! -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>lia aguilar portfolio</title>
+    <title>Lia Aguilar Portfolio</title>
     <link rel="stylesheet" href="reset.css" />
     <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
@@ -17,43 +23,48 @@
     />
   </head>
   <body>
-    <!-- main screen -->
+    <!-- main screen
+     it will be the one that the viewer first loads in on and features the designer
+      name and the project photos at the back. i used placeholder images for now. when you scroll, the 
+      designer text name gest bigger and eventually fades alongside the stars, this will allow the function 
+      of pressing the project photos and will take you to the project page! this is just like the 
+      featured/notable projects, which is why there are only four rectangles. the stars are there
+      just to add some movement because i felt without it, everything felt too static. -->
     <main id="main-screen">
       <div class="background-container">
         <div class="background-box" data-project="project1">
           <img
             src="https://i.pinimg.com/736x/8d/cc/26/8dcc26befe24616bdf09fd02cdf24ea9.jpg"
-            alt=""
           />
-          <div class="rectangle-overlay"><span>Project One</span></div>
+          <div class="rectangle-overlay"><span>PROJECT ONE</span></div>
         </div>
         <div class="background-box" data-project="project2">
           <img
             src="https://i.pinimg.com/736x/67/88/40/678840ba1855b66017aeeb32d99f654d.jpg"
-            alt=""
           />
-          <div class="rectangle-overlay"><span>Project Two</span></div>
+          <div class="rectangle-overlay"><span>PROJECT TWO</span></div>
         </div>
         <div class="background-box" data-project="project3">
           <img
             src="https://i.pinimg.com/736x/52/f7/b9/52f7b9482f1f94f3946d650a6359fc0b.jpg"
-            alt=""
           />
-          <div class="rectangle-overlay"><span>Project Three</span></div>
+          <div class="rectangle-overlay"><span>PROJECT THREE </span></div>
         </div>
         <div class="background-box" data-project="project4">
           <img
             src="https://i.pinimg.com/736x/03/7b/53/037b53510b686c0f1465640f3b749ca9.jpg"
-            alt=""
           />
-          <div class="rectangle-overlay"><span>Project Four</span></div>
+          <div class="rectangle-overlay"><span>PROJECT FOUR</span></div>
         </div>
       </div>
 
-      <!-- big name -->
+      <!-- designer name -->
       <h1 class="my-name">LIA AGUILAR</h1>
 
-      <!-- animated stars -->
+      <!-- animated stars
+       i put the style in here because it was easier than making 3 new entries in the css file, when
+       i could just do it here on it, and makes it easy to move and rotate if i want to change
+       it in the future! used an svg as well so its scaleable!-->
       <div
         class="star"
         style="
@@ -86,7 +97,10 @@
       </div>
     </main>
 
-    <!-- footer navigation -->
+    <!-- footer navigation
+     the bottom part of the screen which is the main form of navigation. split up into different sections that i felt
+     were most likely to be part of a portfolio website. i used svgs for the icons to make it scaleable as well, but this
+     time i did the actual svg text instead of a file so i could easily change the color. -->
     <footer>
       <div class="footer-icons" data-section="about">
         <div class="labels"><span>About</span></div>
@@ -143,36 +157,45 @@
       </div>
     </footer>
 
-    <!-- section content pages -->
+    <!-- content pages 
+     the actual content when you press the icons! made it so you can only access it when you press/scroll on the icons.-->
     <div id="about" class="content-page">
       <button class="back-button">← Back</button>
-      <h1>About</h1>
+      <h1>ABOUT</h1>
+
+      <!-- about page includes an image and short biography, it would explain who the artist is and what their goals and beliefs
+       are. important to keep it short -->
 
       <div class="about-container">
         <div class="about-image">
           <img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Radiohead-Osheaga.jpg/440px-Radiohead-Osheaga.jpg"
-            alt="Radiohead"
+            src="https://i.pinimg.com/736x/eb/8e/64/eb8e64342508d09195ea79439a49d081.jpg"
           />
         </div>
         <div class="about-text">
           <p>
-            Radiohead is a British rock band known for constantly reinventing
-            their sound, blending experimental textures with deeply emotional
-            songwriting. With iconic albums like <em>OK Computer</em>,
-            <em>Kid A</em>, and <em>In Rainbows</em>, their work continues to
-            influence musicians and designers alike. Their innovative approach
-            to both music and visuals represents a commitment to artistic
-            integrity, exploration, and pushing the boundaries of conventional
-            media.
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quas non
+            suscipit minima vel assumenda aut alias sequi at magni, magnam
+            aspernatur repellat! Repellendus maiores aliquam animi quis ipsa,
+            est adipisci ad facilis cum vel. Magnam nihil amet quia rem, ab eius
+            voluptatibus libero architecto. Ab quas exercitationem labore eius
+            doloribus amet quae aspernatur aperiam nam.
           </p>
         </div>
       </div>
     </div>
 
+    <!-- the projects section will probably be the one that is most used. features all the work of the artist.
+     for this i just did 4 but of course a designer would most likely have more than just four pieces of work
+     to showcase. so they could just add more to the carousel. made it so theres one project featured at a time
+     with a very short description, so the viewer could find what they are looking for quickly, with a visual 
+     to accompony the description. if it was a more experienced designer for example, we could make it have
+     multiple carousels with a title for each one like "Coding" or "Artwork" or "Music" and each project will
+     be under that.  i also made it so you click on the photo and it will take you to the project page. you can 
+     also click on the dots at the bottom to jump to that project!-->
     <div id="projects" class="content-page">
       <button class="back-button">← Back</button>
-      <h1 class="section-title">Projects</h1>
+      <h1 class="section-title">PROJECTS</h1>
 
       <div class="carousel-container">
         <button class="arrow left-arrow">
@@ -191,67 +214,67 @@
         </button>
 
         <div class="carousel-track">
-          <!-- Project 1 -->
+          <!-- project one and its description -->
           <div class="carousel-slide" data-target="project1">
             <div class="project-image">
               <img
                 src="https://i.pinimg.com/736x/13/1c/25/131c252c4e65ce8a1d60b9c6623ef3c2.jpg"
-                alt="Project 1"
               />
             </div>
             <div class="project-text">
               <h2>Project One</h2>
-              <p>This is a short description of the first project.</p>
+              <p>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                Cupiditate eum praesentium repellendus, expedita velit rerum?
+              </p>
             </div>
           </div>
 
-          <!-- Project 2 -->
+          <!-- project two and its description  -->
           <div class="carousel-slide" data-target="project2">
             <div class="project-image">
               <img
                 src="https://i.pinimg.com/736x/8b/5b/c7/8b5bc71fd9bb3b54d1af99a1d68dba92.jpg"
-                alt="Project 2"
               />
             </div>
             <div class="project-text">
               <h2>Project Two</h2>
               <p>
-                Description for project two goes here. You can change these
-                images and descriptions anytime.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad
+                animi incidunt voluptate optio officia ex obcaecati.
               </p>
             </div>
           </div>
 
-          <!-- Project 3 -->
+          <!-- project three and its description  -->
           <div class="carousel-slide" data-target="project3">
             <div class="project-image">
               <img
                 src="https://i.pinimg.com/736x/be/93/33/be93334ba5dcb41413c6c61258e4e5e7.jpg"
-                alt="Project 3"
               />
             </div>
             <div class="project-text">
               <h2>Project Three</h2>
               <p>
-                Third project blurb goes here. Each image is pulled from
-                Unsplash and can be swapped later.
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit
+                illum perferendis, tenetur accusantium ex voluptates natus vel!
               </p>
             </div>
           </div>
 
-          <!-- Project 4 -->
+          <!-- project four and its description  -->
           <div class="carousel-slide" data-target="project4">
             <div class="project-image">
               <img
                 src="https://i.pinimg.com/736x/91/a3/71/91a371798a16e988b79239cbb0e1a472.jpg"
-                alt="Project 4"
               />
             </div>
             <div class="project-text">
               <h2>Project Four</h2>
               <p>
-                Brief text for project four. Layout remains consistent with
-                About and Education sections.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Eligendi consequatur impedit reiciendis natus. Cumque laudantium
+                aut saepe iusto!
               </p>
             </div>
           </div>
@@ -259,7 +282,7 @@
 
         <button class="arrow right-arrow">
           <svg
-            class="arrow-icon flipped"
+            class="arrow-icon flip"
             viewBox="0 0 24 24"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -281,138 +304,134 @@
       </div>
     </div>
 
+    <!-- education section
+     basically shows the education of the designer. listed with a photo (maybe of the school or something), a title,
+     and a description. the description can be used to list the highlights of that certain education, and what
+     makes you qualified basically. used a visual seperator so its more obvious which text/image is together. -->
     <div id="education" class="content-page">
       <button class="back-button">← Back</button>
-      <h1>Education</h1>
+      <h1>EDUCATION</h1>
 
-      <div class="education-container">
-        <!-- Repeat this block 5 times with different images/text if needed -->
-        <div class="education-entry">
+      <div class="edu-container">
+        <div class="edu-entry">
           <div class="edu-image">
             <img
-              src="https://upload.wikimedia.org/wikipedia/en/3/32/Oxford_University_Coat_Of_Arms.svg"
-              alt="School Logo"
+              src="https://i.pinimg.com/736x/89/72/7f/89727ff678146e1c1e00349c2296c729.jpg"
             />
           </div>
           <div class="edu-text">
-            <h2>Oxford University</h2>
+            <h2>Education One</h2>
             <p>
-              Radiohead received their honorary degrees in musicology from this
-              fictional version of Oxford. It was here they studied advanced
-              glitch textures, reverb theology, and the philosophy of melancholy
-              chords.
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas
+              nostrum fuga ullam quibusdam eaque ad earum eos, minus, tenetur
+              eum repellat nihil, unde quo dignissimos reprehenderit esse
+              doloremque autem dolorum.
             </p>
           </div>
         </div>
 
         <hr />
 
-        <div class="education-entry">
+        <div class="edu-entry">
           <div class="edu-image">
             <img
-              src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Logo_of_the_Royal_College_of_Music.svg"
-              alt="School Logo"
+              src="https://i.pinimg.com/736x/4d/2e/54/4d2e540a4ad1e85f42c5c4f61f43e801.jpg"
             />
           </div>
           <div class="edu-text">
-            <h2>Royal College of Sound</h2>
+            <h2>Education Two</h2>
             <p>
-              Thom Yorke led weekly seminars on “Emotional Resonance in F#
-              Minor.” Coursework involved crying to *Pyramid Song* and building
-              modular synth patches in total darkness.
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+              Reprehenderit mollitia aliquid labore numquam provident dolore
+              molestiae quisquam, voluptas commodi laudantium harum, velit
+              praesentium eius, est vel dolores consectetur a suscipit!
             </p>
           </div>
         </div>
 
         <hr />
 
-        <div class="education-entry">
+        <div class="edu-entry">
           <div class="edu-image">
             <img
-              src="https://upload.wikimedia.org/wikipedia/commons/8/84/Berklee_College_of_Music_logo.svg"
-              alt="School Logo"
+              src="https://i.pinimg.com/736x/7f/27/25/7f2725a4db4d8173a12745b48be5fd7d.jpg"
             />
           </div>
           <div class="edu-text">
-            <h2>Berklee College of Experimental Harmony</h2>
+            <h2>Education Three</h2>
             <p>
-              Specialized in polyrhythms, spectral delays, and deconstructing
-              chord progressions. Students are trained to layer sadness over
-              more sadness.
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius
+              asperiores mollitia, eligendi, consequuntur sapiente consequatur
+              aliquam accusamus repellendus eum ex officia eveniet atque
+              assumenda distinctio possimus voluptates, magni earum laborum!
             </p>
           </div>
         </div>
 
         <hr />
 
-        <div class="education-entry">
+        <div class="edu-entry">
           <div class="edu-image">
             <img
-              src="https://upload.wikimedia.org/wikipedia/commons/e/e1/California_Institute_of_the_Arts_logo.svg"
-              alt="School Logo"
+              src="https://i.pinimg.com/736x/ea/34/e2/ea34e233033d8218f679d595c685be0a.jpg"
             />
           </div>
           <div class="edu-text">
-            <h2>CalArts (Ghost Division)</h2>
+            <h2>Education Four</h2>
             <p>
-              Radiohead’s haunting minimalism was refined here. Coursework
-              included “Ambient Anxiety” and “Reverse Reverb Rituals.” Final
-              exams were whispered through contact mics.
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+              Obcaecati aperiam, laborum soluta odio, porro iusto labore placeat
+              beatae qui id illum mollitia cupiditate minus quas cum asperiores
+              sed? Vero, ipsam!
             </p>
           </div>
         </div>
 
         <hr />
 
-        <div class="education-entry">
+        <div class="edu-entry">
           <div class="edu-image">
             <img
-              src="https://upload.wikimedia.org/wikipedia/en/1/1e/University_of_Reykjav%C3%ADk_logo.svg"
-              alt="School Logo"
+              src="https://i.pinimg.com/736x/8b/44/2b/8b442baeb94c57f2346b0d4e09d1cc8a.jpg"
             />
           </div>
           <div class="edu-text">
-            <h2>University of Reykjavík</h2>
+            <h2>Education Five</h2>
             <p>
-              For their winter semester, the band moved to Iceland to explore
-              coldwave theory, arctic ambience, and working with whale bone
-              percussion.
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem
+              accusamus amet voluptatibus a corrupti, ipsa similique est
+              praesentium quae deserunt ratione, consectetur aut necessitatibus
+              itaque, ut repellendus accusantium. Vel, eius.
             </p>
           </div>
         </div>
       </div>
     </div>
+
+    <!-- experience section
+     basically where you can show your work experience! where youve worked and i always found its better
+     to do it in dot points, similar to a resume. its more to the point and blocks of texts feel more scary. 
+     the title can include the job title and where the designer worked! -->
 
     <div id="experience" class="content-page">
       <button class="back-button">← Back</button>
-      <h1>Experience</h1>
+      <h1>EXPERIENCE</h1>
 
       <div class="experience-container">
         <div class="experience-entry">
-          <h2>Audio Technician – Glastonbury Festival</h2>
+          <h2>Experience One</h2>
           <ul>
             <li>
-              Ran on-stage audio checks for artists across multiple stages.
-            </li>
-            <li>Assisted with modular synth setup and delay loop testing.</li>
-            <li>Provided technical support under tight changeover windows.</li>
-          </ul>
-        </div>
-
-        <hr />
-
-        <div class="experience-entry">
-          <h2>Interactive Media Intern – XL Recordings</h2>
-          <ul>
-            <li>
-              Designed micro-interactions and visuals for album campaigns.
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic,
+              soluta!
             </li>
             <li>
-              Helped prototype a live visualizer for *Everything In Its Right
-              Place*.
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam
+              quia quidem itaque quasi, dignissimos facere!
             </li>
             <li>
-              Worked closely with front-end developers and motion designers.
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui
+              ullam autem nesciunt.
             </li>
           </ul>
         </div>
@@ -420,30 +439,17 @@
         <hr />
 
         <div class="experience-entry">
-          <h2>Sound Design Assistant – BBC Radiophonic Workshop</h2>
+          <h2>Experience Two</h2>
           <ul>
             <li>
-              Developed abstract soundscapes for film and podcast projects.
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ad
+              pariatur est facere atque quia enim voluptatem impedit! Tempore,
+              iure deserunt commodi non nihil placeat quod?
             </li>
+            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
             <li>
-              Created granular sound textures inspired by Radiohead’s *Kid A*.
-            </li>
-            <li>Recorded and processed custom foley for experimental work.</li>
-          </ul>
-        </div>
-
-        <hr />
-
-        <div class="experience-entry">
-          <h2>Installation Artist – Tate Modern</h2>
-          <ul>
-            <li>Designed and installed an interactive audio-visual piece.</li>
-            <li>
-              Visitors experienced sound-reactive lighting tied to album
-              aesthetics.
-            </li>
-            <li>
-              Coordinated AV rig setup and projection mapping for the exhibit.
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+              Distinctio provident quisquam adipisci voluptates ratione.
             </li>
           </ul>
         </div>
@@ -451,56 +457,103 @@
         <hr />
 
         <div class="experience-entry">
-          <h2>Freelance Audio Visual Designer</h2>
+          <h2>Experience Three</h2>
           <ul>
-            <li>Produced live visual sets for indie musicians and DJs.</li>
-            <li>Built visuals in TouchDesigner and After Effects.</li>
             <li>
-              Specialized in audio-reactive typography and glitch effects.
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque,
+              tempore?
+            </li>
+            <li>
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quo
+              ducimus modi repellat facilis, debitis, amet voluptatem ab qui
+              ullam, eaque animi.
+            </li>
+            <li>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+              Praesentium voluptas reprehenderit nobis itaque dignissimos, at
+              hic illum.
+            </li>
+          </ul>
+        </div>
+
+        <hr />
+
+        <div class="experience-entry">
+          <h2>Experience Four</h2>
+          <ul>
+            <li>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque
+              dolore soluta consequatur.
+            </li>
+            <li>Lorem ipsum dolor sit amet consectetur adipisicing.</li>
+            <li>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Laboriosam dignissimos dolor quibusdam deleniti. Eum, laudantium.
+            </li>
+          </ul>
+        </div>
+
+        <hr />
+
+        <div class="experience-entry">
+          <h2>Experience Five</h2>
+          <ul>
+            <li>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque.
+            </li>
+            <li>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+              Explicabo voluptatum sapiente amet.
+            </li>
+            <li>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam quia
+              magni praesentium, commodi maxime quos officiis accusamus!
             </li>
           </ul>
         </div>
       </div>
     </div>
 
+    <!-- the contact page!
+     especialy important for a portfolio because if people like your work and yourself, they need
+     to know how to contact you. i added links to the side as well as form that you can fill out
+     so they dont even need to go to a seperate tab, they can send one through the website which
+     i think is super useful. made it so you cant submit blank messages, everything has to be filled
+     and the email checks if its actually an email! -->
+
     <div id="contact" class="content-page">
       <button class="back-button">← Back</button>
-      <h1>Contact</h1>
+      <h1>CONTACT</h1>
 
       <div class="contact-container">
-        <!-- Left side: info and icons -->
         <div class="contact-info">
           <p>
-            For any enquires, questions, or anything at all, feel free to reach
-            out to me in any of my contact links below! Alternatively, you can
-            fill out the form and I will get back to you as soon as possible!
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur sed
+            nam dolor inventore! Quisquam facere qui fuga distinctio corrupti
+            ipsum?
           </p>
 
           <ul class="contact-list">
             <li>
-              <img class="contact-icon" src="phone.svg" alt="Phone icon" />
+              <img class="contact-icon" src="phone.svg" />
               <span>+61 400 000 000</span>
             </li>
             <li>
-              <img class="contact-icon" src="email2.svg" alt="Email icon" />
-              <span>lia.aguilar@email.com</span>
+              <img class="contact-icon" src="email2.svg" />
+              <span>email@email.com</span>
             </li>
             <li>
-              <img class="contact-icon" src="insta.svg" alt="Instagram icon" />
-              <span>@lia.visuals</span>
+              <img class="contact-icon" src="insta.svg" />
+              <span>@insta.gram</span>
             </li>
             <li>
-              <img
-                class="contact-icon"
-                src="linkedin.svg"
-                alt="LinkedIn icon"
-              />
-              <span>linkedin.com/in/liaaguilar</span>
+              <img class="contact-icon" src="linkedin.svg" />
+              <span>linkedin.com/in/linkedin</span>
             </li>
           </ul>
         </div>
 
-        <!-- Right side: form -->
+        <!-- contact form -->
         <form class="contact-form">
           <div class="name-fields">
             <input type="text" placeholder="First" />
@@ -512,7 +565,9 @@
         </form>
       </div>
     </div>
-    <!-- Project 1 Page -->
+
+    <!-- these are the actual pages for each project! goes in deeper of what the actual project is, how it was made, etc.
+     just did placeholder text for now but is very easily replaced.-->
     <div id="project1" class="content-page">
       <button class="back-button">← Back</button>
       <h1>PROJECT ONE</h1>
@@ -520,13 +575,15 @@
         <div class="project-detail-image">
           <img
             src="https://i.pinimg.com/736x/13/1c/25/131c252c4e65ce8a1d60b9c6623ef3c2.jpg"
-            alt="Project 1"
           />
         </div>
         <p>
-          This project explores themes of identity through interactive visuals
-          and sound. The core mechanic revolves around user presence and dynamic
-          visuals that evolve in real-time.
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora,
+          eligendi quasi sapiente nostrum sequi voluptas nobis totam veniam
+          distinctio repellat eos quas veritatis. Esse veritatis recusandae id
+          ex! Distinctio itaque magnam odio reiciendis, vitae aperiam odit totam
+          veritatis culpa laboriosam voluptate nam. Doloribus soluta in
+          temporibus ipsam, reprehenderit tempore? Explicabo.
         </p>
       </div>
     </div>
@@ -539,13 +596,21 @@
         <div class="project-detail-image">
           <img
             src="https://i.pinimg.com/736x/8b/5b/c7/8b5bc71fd9bb3b54d1af99a1d68dba92.jpg"
-            alt="Project 2"
           />
         </div>
         <p>
-          An experimental interface that transforms user gestures into
-          generative patterns. Designed for gallery installations and web-based
-          interaction studies.
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores
+          assumenda officia sint, excepturi voluptatibus ut iusto, illo quis est
+          harum sit voluptates unde? Nesciunt illum saepe quibusdam commodi
+          natus? Rem distinctio tempora natus maiores autem iste ducimus, cumque
+          nam? Odit, exercitationem voluptatibus libero minus autem consectetur
+          facere sit dolorum perferendis laboriosam perspiciatis accusamus
+          quibusdam, sequi ipsa optio. Esse in exercitationem recusandae
+          deleniti nemo quaerat, odio sapiente quod architecto iusto facilis
+          maxime ipsam. Est quisquam delectus eum a minima eaque sapiente
+          eveniet ducimus accusantium reiciendis beatae id quibusdam quasi sit
+          quis impedit dolorum, possimus labore voluptate maiores excepturi!
+          Iste, voluptatem fugiat?
         </p>
       </div>
     </div>
@@ -558,13 +623,17 @@
         <div class="project-detail-image">
           <img
             src="https://i.pinimg.com/736x/be/93/33/be93334ba5dcb41413c6c61258e4e5e7.jpg"
-            alt="Project 3"
           />
         </div>
         <p>
-          A short film augmented by sound-reactive overlays. Explores emotional
-          memory through ambient audio layers and low-fidelity visual
-          distortion.
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ab quis
+          laudantium cumque. Ipsum velit amet inventore error rem maiores
+          aliquid minima quibusdam, consequatur pariatur fuga odit facere neque,
+          aliquam quae iusto sequi, atque repellat officia reprehenderit illum
+          vitae nam. Dolorum quas doloribus hic, perferendis numquam ipsa
+          dignissimos aliquid neque quasi unde impedit totam mollitia aspernatur
+          repudiandae dolores sit natus voluptates voluptatibus temporibus.
+          Dolores dicta nam doloribus quo, quis ipsa alias!
         </p>
       </div>
     </div>
@@ -577,13 +646,19 @@
         <div class="project-detail-image">
           <img
             src="https://i.pinimg.com/736x/91/a3/71/91a371798a16e988b79239cbb0e1a472.jpg"
-            alt="Project 4"
           />
         </div>
         <p>
-          A collaborative browser-based tool that maps user-generated data into
-          spatial poetry. Each session results in a unique generative structure
-          that visualizes digital intimacy.
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Atque vitae
+          quos corrupti, qui illo debitis. Ipsa aliquam voluptate omnis ullam
+          accusamus odit nemo eos eius qui. Asperiores accusamus, consequatur
+          nesciunt, minus qui provident quasi maxime, eius sunt numquam
+          perferendis atque sit. Quasi obcaecati odio nam ab molestiae ex
+          numquam commodi enim quaerat similique sint aperiam excepturi minus,
+          rerum repellat possimus id debitis eius architecto repellendus,
+          tempora quo! Amet, sunt. Alias in delectus aspernatur qui obcaecati
+          necessitatibus, et explicabo atque distinctio quia id fuga omnis aut
+          deleniti accusamus praesentium laborum consequatur.
         </p>
       </div>
     </div>

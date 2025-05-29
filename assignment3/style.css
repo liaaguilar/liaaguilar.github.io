@@ -1,4 +1,11 @@
-/* reset + global styles */
+/* to be honest, this css was the worst part for me. i hated like writing
+everything done for each and every part. i feel like though i definitely
+wrote too much, im thinking there was an easier way to just get everything
+like it, but since i went section by section, i also did the css section
+by section. anyways this was my least favorite part because of how repetitive
+everything is... */
+
+/* =============================== BASE ============================================= */
 * {
   margin: 0;
   padding: 0;
@@ -7,81 +14,131 @@
 
 body,
 html {
-  background: #121212;
-  color: #f0f0f0;
-  overflow: hidden;
+  background: #121212; /* background for entire site */
+  color: #f0f0f0; /* light text for entire site */
+  overflow: hidden; /* prevents scrolling on parts i dont want them to see */
 }
 
-/* main screen layout */
+/* ============================== MAIN SCREEN  ============================================= */
 main#main-screen {
+  /* main screen container */
   height: 100vh;
   width: 100vw;
   position: relative;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-bottom: 100px;
-  background-color: #121212;
+  justify-content: center; /* centre content horizontally */
+  align-items: center; /* centre content vertically */
+  padding-bottom: 100px; /* space for the footer */
+  background-color: #121212; /* matches background */
 }
 
-/* background image rectangles */
+/* ============================ BACKGROUND RECTANGLES ============================================ */
 .background-container {
-  position: absolute;
+  /* container for background images */
+  position: absolute; /* made the position behind the name */
   display: flex;
-  gap: 10px;
-  width: 80%;
-  height: 50%;
-  z-index: 5;
+  gap: 10px; /* space between images */
+  width: 80%; /* container width */
+  height: 50%; /* container height */
+  z-index: 5; /* placed behind name text */
   overflow: hidden;
 }
 
 .background-box {
-  flex: 1;
+  /* individual image box */
+  flex: 1; /* same width for each box */
   overflow: hidden;
   position: relative;
   z-index: 5;
+  cursor: pointer;
+  transition: filter 0.3s ease;
+  pointer-events: auto; /* allows interaction */
 }
 
 .background-box img {
+  /* image inside each box */
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: cover; /* scales image */
   display: block;
 }
 
-/* big name */
+.rectangle-overlay {
+  /* text on hover */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0; /* hidden by default */
+  transition: opacity 0.3s ease; /* fade */
+  pointer-events: none; /* lets hover pass through to box */
+  z-index: 6;
+}
+
+.rectangle-overlay span {
+  /* text inside the overlay */
+  font-family: "IBM Plex Serif", serif;
+  font-size: 2rem;
+  color: #f0f0f0;
+}
+
+.background-box.active-hover:hover {
+  /* dim image on hover */
+  filter: brightness(40%);
+}
+
+.background-box.active-hover:hover .rectangle-overlay {
+  /* show overlay text on hover */
+  opacity: 1;
+}
+
+/* ===============================DESIGNER NAME============================================= */
 .my-name {
+  /* designer name */
   position: relative;
-  z-index: 10;
+  z-index: 10; /* appears above images */
   font-size: 9vw;
   font-weight: 400;
   font-style: normal;
   font-family: "Special Gothic Expanded One", sans-serif;
   color: #f0f0f0;
   text-align: center;
-  transition: transform 0.6s ease, opacity 0.6s ease;
+  transition: transform 0.6s ease, opacity 0.6s ease; /* animate when scroll */
 }
 
-/* animated star icons */
+.my-name.inactive {
+  /* faded version after scroll */
+  opacity: 0; /* fades out */
+  pointer-events: none;
+}
+
+/* ====================================== ANIMATED STARS ========================================= */
 .star {
+  /* animated star */
   position: absolute;
   transform-origin: center;
   transform: translate(-50%, -50%);
-  transition: transform 0.6s ease, opacity 0.6s ease;
-  z-index: 10;
+  transition: transform 0.6s ease, opacity 0.6s ease; /* animates position/fade */
+  z-index: 10; /* placed on top of everything */
 }
 
 .star img {
-  width: 12vw;
+  /* star svg */
+  width: 12vw; /* responsive size */
   max-width: 200px;
   min-width: 30px;
   height: auto;
   display: block;
   filter: brightness(0) saturate(100%) invert(63%) sepia(11%) saturate(571%)
-    hue-rotate(2deg) brightness(90%) contrast(90%);
+    hue-rotate(2deg) brightness(90%) contrast(90%); /* svg wouldnt work so i changed the color here manually and asked chat gpt to make
+    it the same color as the icons lol */
 }
 
-/* individual star sizing */
+/* size of each star */
 .star1 {
   width: 14vw;
 }
@@ -92,39 +149,39 @@ main#main-screen {
   width: 16vw;
 }
 
-/* scroll zoom/fade effect */
 .scroll-scale {
-  transform: translate(-50%, -50%) scale(5) !important;
-  opacity: 0;
+  /* scroll animation */
+  transform: translate(-50%, -50%) scale(5) !important; /* bigger and moves off screen */
+  opacity: 0; /* fades out */
 }
 
-/* animation rectangle that grows upward */
+/* =========================== FOOTER ANIMATION ========================================== */
 .footer-animation {
+  /* makes sure everything stays in place during transition */
   position: fixed;
   z-index: 9999;
   color: #121212;
   font-weight: bold;
-  font-size: 1rem;
+  font-size: 5rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  pointer-events: none;
-  transition: none;
 }
 
-/* footer navigation */
+/* ========================== FOOTER ===================================== */
 footer {
-  position: fixed;
+  position: fixed; /* stays at bottom */
   bottom: 0;
   width: 100%;
   height: 100px;
   display: flex;
-  background: #1e1e1e;
-  box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.3);
+  background: #1e1e1e; /* slightly lighter background */
+  box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.3); /* drop shadow above */
   z-index: 10;
 }
 
 .footer-icons {
+  /* icon sections */
   flex: 1;
   position: relative;
   display: flex;
@@ -136,6 +193,7 @@ footer {
 }
 
 .icon {
+  /* scg icon*/
   width: 40px;
   height: 40px;
   color: #9a9580;
@@ -143,23 +201,25 @@ footer {
 }
 
 .footer-icons:hover .icon {
+  /* bigger icon on hover */
   transform: scale(1.4);
 }
 
-/* labels above icons */
 .labels {
+  /* label */
   position: absolute;
   bottom: 100%;
-  height: 0px;
+  height: 0px; /* is hidden until hover */
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
+  overflow: hidden; /* hide overflow until hover */
   transition: height 0.3s ease;
 }
 
 .labels span {
+  /* label text */
   opacity: 0;
   font-size: 1rem;
   color: #121212;
@@ -168,78 +228,82 @@ footer {
 }
 
 .footer-icons:hover .labels {
+  /* expands label on hover */
   height: 50px;
 }
+
 .footer-icons:hover .labels span {
+  /* show label on hover */
   opacity: 1;
 }
 
-/* section colors on hover */
-.footer-icons:nth-child(1):hover {
-  background-color: #e53935;
-}
-.footer-icons:nth-child(1):hover .labels {
-  background-color: #e53935;
-}
-.footer-icons:nth-child(2):hover {
-  background-color: #fb8c00;
-}
-.footer-icons:nth-child(2):hover .labels {
-  background-color: #fb8c00;
-}
-.footer-icons:nth-child(3):hover {
-  background-color: #fdd835;
-}
-.footer-icons:nth-child(3):hover .labels {
-  background-color: #fdd835;
-}
-.footer-icons:nth-child(4):hover {
-  background-color: #1e88e5;
-}
-.footer-icons:nth-child(4):hover .labels {
-  background-color: #1e88e5;
-}
-.footer-icons:nth-child(5):hover {
-  background-color: #8e24aa;
-}
-.footer-icons:nth-child(5):hover .labels {
-  background-color: #8e24aa;
-}
+/* =========================== FOOTER NAVIGATION: ACTIVE & HOVER STATES ================================== */
+/* this part really confused me so lowkey had to get help from my mom with this and i dont really get how the
+nth-child thing works works but */
 
-/* keep active color after scroll/click */
-.footer-icons.active-color:nth-child(1),
+/* about */
+.footer-icons:nth-child(1):hover,
+.footer-icons.active-color:nth-child(1) {
+  background-color: #8e726f;
+}
+.footer-icons:nth-child(1):hover .labels,
 .footer-icons.active-color:nth-child(1) .labels {
-  background-color: #e53935;
-}
-.footer-icons.active-color:nth-child(2),
-.footer-icons.active-color:nth-child(2) .labels {
-  background-color: #fb8c00;
-}
-.footer-icons.active-color:nth-child(3),
-.footer-icons.active-color:nth-child(3) .labels {
-  background-color: #fdd835;
-}
-.footer-icons.active-color:nth-child(4),
-.footer-icons.active-color:nth-child(4) .labels {
-  background-color: #1e88e5;
-}
-.footer-icons.active-color:nth-child(5),
-.footer-icons.active-color:nth-child(5) .labels {
-  background-color: #8e24aa;
+  background-color: #8e726f;
 }
 
-/* fade background after scroll transition */
+/* projects */
+.footer-icons:nth-child(2):hover,
+.footer-icons.active-color:nth-child(2) {
+  background-color: #735d78;
+}
+.footer-icons:nth-child(2):hover .labels,
+.footer-icons.active-color:nth-child(2) .labels {
+  background-color: #735d78;
+}
+
+/* education */
+.footer-icons:nth-child(3):hover,
+.footer-icons.active-color:nth-child(3) {
+  background-color: #7a7c5c;
+}
+.footer-icons:nth-child(3):hover .labels,
+.footer-icons.active-color:nth-child(3) .labels {
+  background-color: #7a7c5c;
+}
+
+/* experience */
+.footer-icons:nth-child(4):hover,
+.footer-icons.active-color:nth-child(4) {
+  background-color: #4a4e69;
+}
+.footer-icons:nth-child(4):hover .labels,
+.footer-icons.active-color:nth-child(4) .labels {
+  background-color: #4a4e69;
+}
+
+/* contact */
+.footer-icons:nth-child(5):hover,
+.footer-icons.active-color:nth-child(5) {
+  background-color: #6d6875;
+}
+.footer-icons:nth-child(5):hover .labels,
+.footer-icons.active-color:nth-child(5) .labels {
+  background-color: #6d6875;
+}
+
 .footer-icons.fading-out {
   transition: background-color 0.6s ease;
   background-color: transparent !important;
 }
+
 .footer-icons.fading-out .labels {
   background-color: transparent !important;
 }
 
-/* content section panels */
+/* ======================== CONTENT ======================================== */
 .content-page {
-  display: none;
+  /* all content pages for consistency */
+  display: none; /* hidden by default */
   position: absolute;
   top: 0;
   left: 0;
@@ -254,6 +318,7 @@ footer {
   font-weight: 400;
 }
 
+/* short animation when lcicked on page! looks better in my opinion */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -266,10 +331,12 @@ footer {
 }
 
 .content-page h1 {
+  /* title text*/
   font-size: 3rem;
   margin-bottom: 20px;
   text-align: center;
-  color: #e84242;
+  color: #9a9580;
+  font-family: "Special Gothic Expanded One", sans-serif;
 }
 
 .content-page p {
@@ -281,7 +348,7 @@ footer {
   color: #ddd;
 }
 
-/* back button */
+/* back button on */
 .back-button {
   position: fixed;
   top: 30px;
@@ -297,11 +364,13 @@ footer {
 }
 
 .back-button:hover {
+  /* invert colors on hover */
   background: #9a9580;
   color: #121212;
 }
 
-/* fade-in when returning to main screen */
+/* ======================= ANIMATION FADES ================================= */
+/* is the fading animation when u click onto the main screen and such */
 #main-screen.fade-in {
   animation: fadeInMain 0.5s ease forwards;
 }
@@ -317,7 +386,6 @@ footer {
   }
 }
 
-/* fade out section when returning to main screen */
 .content-page.fade-out {
   animation: fadeOutPage 0.4s ease forwards;
 }
@@ -332,30 +400,30 @@ footer {
     transform: translateY(20px);
   }
 }
-/* override about section colors */
+
+/* ============================ ABOUT SECTION ====================================== */
 #about h1 {
+  /* title at top of the section */
   font-size: 3.5rem;
   margin-bottom: 40px;
   text-align: center;
-  color: #9a9580;
-  font-family: "Special Gothic Expanded One", sans-serif;
-  text-transform: uppercase;
 }
 
-/* about section layout */
 .about-container {
+  /* layout container */
   display: flex;
-  gap: 40px;
+  gap: 40px; /* space between image and text */
   margin-top: 100px;
   max-width: 1000px;
   margin-left: auto;
   margin-right: auto;
   padding: 0 20px;
   align-items: center;
-  flex-wrap: wrap;
+  flex-wrap: wrap; /* stacking on small screens!!! */
 }
 
 .about-image {
+  /* profile image */
   flex: 1;
   min-width: 240px;
   max-width: 300px;
@@ -364,13 +432,14 @@ footer {
 
 .about-image img {
   width: 100%;
-  border-radius: 8px; /* gives it subtle rounded corners; or use 0 for sharp */
-  object-fit: cover;
+  border-radius: 8px;
+  object-fit: cover; /* makes sure image doest stretch */
   aspect-ratio: 1 / 1;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
 }
 
 .about-text {
+  /* text container next to image */
   flex: 2;
   min-width: 300px;
 }
@@ -382,25 +451,21 @@ footer {
   text-align: left;
 }
 
-/* override education section colors */
+/* =========================== EDUCATION SECTION ====================================== */
 #education h1 {
-  color: #9a9580;
-  font-family: "Special Gothic Expanded One", sans-serif;
-  text-transform: uppercase;
+  /* title*/
   margin-bottom: 40px;
   text-align: center;
   font-size: 3.5rem;
 }
 
-/* education section container */
-.education-container {
+.edu-container {
   max-width: 1000px;
   margin: 100px auto 40px;
   padding: 0 20px;
 }
 
-/* each education block */
-.education-entry {
+.edu-entry {
   display: flex;
   align-items: center;
   gap: 40px;
@@ -409,12 +474,14 @@ footer {
 }
 
 .edu-image {
+  /* image block for photo */
   flex: 1;
   min-width: 240px;
   max-width: 300px;
 }
 
 .edu-image img {
+  /* actual image */
   width: 100%;
   aspect-ratio: 1 / 1;
   object-fit: cover;
@@ -423,51 +490,51 @@ footer {
 }
 
 .edu-text {
+  /* text block besides image */
   flex: 2;
   min-width: 300px;
 }
 
 .edu-text h2 {
+  /* subheading */
   font-size: 1.5rem;
-  color: #f0f0f0;
   color: #9a9580;
   margin-bottom: 10px;
   font-family: "Special Gothic Expanded One", sans-serif;
 }
 
 .edu-text p {
+  /* text */
   font-size: 1.1rem;
   color: #ccc;
   line-height: 1.6;
   text-align: left;
 }
 
-/* horizontal line between blocks */
-.education-container hr {
+.edu-container hr {
+  /* divider */
   border: none;
   border-top: 1px solid #444;
   margin: 30px 0;
 }
 
-/* experience title */
+/* ============================ EXPERIENCE SECTION ===================================== */
 #experience h1 {
-  color: #9a9580;
-  font-family: "Special Gothic Expanded One", sans-serif;
-  text-transform: uppercase;
+  /* experience  title */
   margin-bottom: 40px;
   text-align: center;
   font-size: 3.5rem;
 }
 
-/* match education section exactly */
 .experience-container {
+  /* container */
   max-width: 1000px;
   margin: 100px auto 40px;
   padding: 0 20px;
 }
 
-/* individual experience entries */
 .experience-entry {
+  /* each job */
   margin-bottom: 40px;
 }
 
@@ -480,7 +547,7 @@ footer {
 }
 
 .experience-entry ul {
-  list-style-type: disc;
+  list-style-type: disc; /* list */
   padding-left: 20px;
   margin: 0;
 }
@@ -493,25 +560,23 @@ footer {
   text-align: left;
 }
 
-/* horizontal line between entries */
 .experience-container hr {
+  /* border line*/
   border: none;
   border-top: 1px solid #444;
   margin: 30px 0;
 }
 
-/* contact page title */
+/* ==================== CONTACT SECTION ===================================== */
 #contact h1 {
-  color: #9a9580;
-  font-family: "Special Gothic Expanded One", sans-serif;
-  text-transform: uppercase;
+  /* contact title*/
   margin-bottom: 40px;
   text-align: center;
   font-size: 3.5rem;
 }
 
-/* main container */
 .contact-container {
+  /* main layout */
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -521,8 +586,8 @@ footer {
   padding: 0 20px;
 }
 
-/* left side */
 .contact-info {
+  /* left column */
   flex: 1;
   min-width: 260px;
 }
@@ -536,6 +601,7 @@ footer {
 }
 
 .contact-list {
+  /* list with icons */
   list-style: none;
   padding: 0;
 }
@@ -550,20 +616,20 @@ footer {
 }
 
 .contact-icon {
+  /* icon images */
   width: 1.2rem;
   height: 1.2rem;
   object-fit: contain;
   flex-shrink: 0;
 }
 
-/* icon style */
 .contact-list .icon {
   font-size: 1.3rem;
   color: #9a9580;
 }
 
-/* right side form */
 .contact-form {
+  /* right column (form) */
   flex: 1;
   min-width: 260px;
   display: flex;
@@ -572,12 +638,13 @@ footer {
 }
 
 .name-fields {
+  /* first and last name inputs */
   display: flex;
   gap: 10px;
 }
 
 .name-fields input {
-  flex: 1;
+  flex: 1; /* makes the width equal */
 }
 
 .contact-form input,
@@ -590,15 +657,11 @@ footer {
   font-family: "IBM Plex Serif", serif;
 }
 
-.contact-form textarea {
-  resize: vertical;
-  height: 120px;
-}
-
 .contact-form button {
+  /* submit button */
   padding: 10px 20px;
   background-color: #9a9580;
-  color: #121212; /* matches your background */
+  color: #121212;
   border: none;
   cursor: pointer;
   font-weight: bold;
@@ -608,10 +671,11 @@ footer {
 }
 
 .contact-form button:hover {
-  background-color: #b3ae91;
+  background-color: #b3ae91; /* lighter shade on hover */
 }
 
 @keyframes shake {
+  /* shake animation for when its not validated */
   0% {
     transform: translateX(0);
   }
@@ -633,56 +697,62 @@ button.shake {
   animation: shake 0.4s ease;
 }
 
-/* PROJECTS PAGE */
+/* ============================ PROJECTS SECTION ==================================== */
 
 #projects h1.section-title {
-  color: #9a9580;
-  font-family: "Special Gothic Expanded One", sans-serif;
-  text-transform: uppercase;
+  /* projects title */
   margin-bottom: 40px;
   text-align: center;
   font-size: 3.5rem;
 }
 
 .carousel-container {
+  /* container carousel  */
   position: relative;
-  overflow: hidden;
+  overflow: hidden; /* hides overflowed slides */
   max-width: 1000px;
-  margin: 100px auto 40px; /* same as about */
+  margin: 100px auto 40px;
   padding: 0 20px;
-  min-height: 300px; /* match about section height */
+  min-height: 300px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .carousel-track {
+  /* track that moves left andright */
   display: flex;
-  transition: transform 0.5s ease;
+  transition: transform 0.5s ease; /* slide motion */
   gap: 40px;
   min-width: 100%;
   width: max-content;
 }
 
 .carousel-slide {
+  /* each slide */
   flex: 0 0 80%;
-  opacity: 0.4;
+  opacity: 0.4; /* dimmed when not highlighted */
+  transform: scale(0.9); /* smaller when inactive */
   transition: opacity 0.5s ease, transform 0.5s ease;
   display: flex;
   gap: 30px;
   align-items: center;
   justify-content: center;
-  transform: scale(0.9);
   min-height: 260px;
-}
-
-#projects {
-  overflow: hidden; /* lock vertical scroll */
+  cursor: pointer;
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  border: 2px solid transparent;
+  border-radius: 8px;
+  background-color: #1a1a1a;
+  padding: 20px;
 }
 
 .carousel-slide.active {
+  /* highlighted slide */
   opacity: 1;
   transform: scale(1);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+  border: 2px solid #333;
 }
 
 .project-image {
@@ -697,40 +767,18 @@ button.shake {
 }
 
 .project-image img {
+  /* image */
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
 }
 
-.carousel-slide {
-  flex: 0 0 80%;
-  min-height: 260px;
-  opacity: 0.4;
-  transform: scale(0.9);
-  transition: opacity 0.5s ease, transform 0.5s ease;
-  display: flex;
-  gap: 30px;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 0 0 rgba(0, 0, 0, 0); /* default no shadow */
-  border: 2px solid transparent; /* default no border */
-  border-radius: 8px;
-  background-color: #1a1a1a; /* dark background for contrast */
-  padding: 20px;
-}
-
-.carousel-slide.active {
-  opacity: 1;
-  transform: scale(1);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
-  border: 2px solid #333;
-}
-
 .project-text {
+  /* text block */
   max-width: 400px;
   color: #ccc;
-  text-align: left; /* align everything to the left */
+  text-align: left;
 }
 
 .project-text h2 {
@@ -738,7 +786,7 @@ button.shake {
   font-size: 2rem;
   color: #9a9580;
   margin-bottom: 10px;
-  text-align: left; /* force left align */
+  text-align: left;
 }
 
 .project-text p {
@@ -749,6 +797,7 @@ button.shake {
 
 /* arrows */
 .arrow {
+  /* arrow button */
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -772,6 +821,7 @@ button.shake {
 }
 
 .arrow-icon {
+  /* svg icon inside the button */
   width: 18px;
   height: 18px;
   fill: #9a9580;
@@ -779,7 +829,7 @@ button.shake {
 }
 
 .arrow:hover .arrow-icon {
-  fill: #121212;
+  fill: #121212; /* icon turns black on hover */
 }
 
 .left-arrow {
@@ -790,14 +840,17 @@ button.shake {
   right: 20px;
 }
 
-.flipped {
+.flip {
+  /* flips icon horizontally  */
   transform: scaleX(-1);
 }
 
-/* indicator dots */
+/* dots under carousel */
 .carousel-indicators {
   text-align: center;
+  cursor: pointer;
 }
+
 .dot {
   height: 12px;
   width: 12px;
@@ -807,14 +860,15 @@ button.shake {
   display: inline-block;
   transition: background-color 0.3s ease;
 }
+
 .dot.active {
-  background-color: #9a9580;
+  background-color: #9a9580; /* highlights current slide */
 }
 
-/* responsive layout */
+/* makes it responsive!!! */
 @media (max-width: 768px) {
   .carousel-slide {
-    flex-direction: column;
+    flex-direction: column; /* stacks image and text */
     align-items: center;
   }
 
@@ -823,54 +877,51 @@ button.shake {
   }
 }
 
-.project-image.placeholder-box {
-  width: 100%;
-  max-width: 400px;
-  aspect-ratio: 4 / 3;
-  background-color: #2e2e2e;
-  border: 2px dashed #555;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+.carousel-slide:first-child {
+  margin-left: calc((100% - 80%) / 2); /* center first slide */
 }
 
-.carousel-slide:first-child {
-  margin-left: calc((100% - 80%) / 2); /* if slides are 80% width */
-}
+/* ========================== INDIVIDUAL PROJECT DETAILS =================================== */
 
 .project-detail-container {
+  /* containr individual project pages */
   max-width: 1000px;
   margin: 100px auto 40px;
-  padding: 0 20px;
+  display: flex;
+  flex-direction: column; /* stacks image and text vertically */
+  align-items: center;
 }
 
 .project-detail-image {
+  /* container for the project image */
   width: 100%;
-  max-width: 1000px;
-  aspect-ratio: 4 / 3;
+  max-width: 850px;
+  aspect-ratio: 16 / 9;
   overflow: hidden;
-  background-color: #1e1e1e;
-  margin-bottom: 30px;
   border: 2px solid #333;
-  border-radius: 8px;
+  border-radius: 8px; /* rounded corners */
+  margin-bottom: 40px;
 }
 
 .project-detail-image img {
+  /* image */
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
 }
 
+/*  titles for each individual project section */
 #project1 h1,
 #project2 h1,
 #project3 h1,
 #project4 h1 {
-  font-size: 2.5rem;
-  margin-bottom: 15px;
-  color: #9a9580;
-  font-family: "Special Gothic Expanded One", sans-serif;
-  text-align: left;
+  font-size: 3.5rem;
+  text-align: center;
+  margin-bottom: 40px;
 }
 
+/* body content for each project */
 #project1 p,
 #project2 p,
 #project3 p,
@@ -879,97 +930,19 @@ button.shake {
   font-size: 1.1rem;
   line-height: 1.6;
   text-align: left;
-  max-width: 700px;
+  max-width: 835px;
 }
 
-/* Project detail heading - match section title style */
 #project1 h1,
 #project2 h1,
 #project3 h1,
 #project4 h1 {
-  font-size: 3.5rem;
-  color: #9a9580;
-  font-family: "Special Gothic Expanded One", sans-serif;
-  text-transform: uppercase;
-  text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 40px; /* space under title */
 }
 
-/* Shared container for image + paragraph */
-.project-detail-container {
-  max-width: 1000px;
-  margin: 40px auto 40px;
-  padding: 0 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-}
-
-/* Smaller 16:9 image box */
-.project-detail-image {
-  width: 100%;
-  max-width: 850px;
-  aspect-ratio: 16 / 9;
-  overflow: hidden;
-  background-color: #1e1e1e;
-  border: 2px solid #333;
-  border-radius: 8px;
-}
-
-.project-detail-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-/* Project description paragraph */
-.project-detail-container p {
-  max-width: 800px;
-  font-size: 1.1rem;
-  line-height: 1.6;
-  color: #ccc;
-  text-align: left;
-}
-
-.background-box {
-  position: relative;
-  cursor: pointer;
-  transition: filter 0.3s ease;
-}
-
-.rectangle-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(18, 18, 18, 0.6);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
-}
-
-.rectangle-overlay span {
-  font-family: "IBM Plex Serif", serif;
-  font-size: 2rem;
-  color: #f0f0f0;
-  text-transform: uppercase;
-}
-
-.background-box.active-hover:hover {
-  filter: brightness(40%);
-}
-
-.background-box.active-hover:hover .rectangle-overlay {
-  opacity: 1;
-}
-
-.my-name.inactive {
-  opacity: 0;
-  pointer-events: none;
+#project1 .project-detail-container,
+#project2 .project-detail-container,
+#project3 .project-detail-container,
+#project4 .project-detail-container {
+  margin-top: 10px; /* extra space above image block */
 }
