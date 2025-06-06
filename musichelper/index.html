@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Music Helper</title>
+
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <!-- Main Fretboard Area -->
+    <div id="fretboard">
+      <svg viewBox="0 0 1500 240" id="fretboard-svg">
+        <rect x="0" y="0" width="1500" height="240" class="fretboard-bg" />
+
+        <!-- Strings -->
+        <g class="strings">
+          <line x1="0" y1="210" x2="1500" y2="210" />
+          <line x1="0" y1="170" x2="1500" y2="170" />
+          <line x1="0" y1="130" x2="1500" y2="130" />
+          <line x1="0" y1="90" x2="1500" y2="90" />
+          <line x1="0" y1="50" x2="1500" y2="50" />
+          <line x1="0" y1="10" x2="1500" y2="10" />
+        </g>
+
+        <!-- Frets -->
+        <g class="frets">
+          <line x1="0" y1="0" x2="0" y2="240" />
+          <line x1="100" y1="0" x2="100" y2="240" />
+          <line x1="200" y1="0" x2="200" y2="240" />
+          <line x1="300" y1="0" x2="300" y2="240" />
+          <line x1="400" y1="0" x2="400" y2="240" />
+          <line x1="500" y1="0" x2="500" y2="240" />
+          <line x1="600" y1="0" x2="600" y2="240" />
+          <line x1="700" y1="0" x2="700" y2="240" />
+          <line x1="800" y1="0" x2="800" y2="240" />
+          <line x1="900" y1="0" x2="900" y2="240" />
+          <line x1="1000" y1="0" x2="1000" y2="240" />
+          <line x1="1100" y1="0" x2="1100" y2="240" />
+          <line x1="1200" y1="0" x2="1200" y2="240" />
+          <line x1="1300" y1="0" x2="1300" y2="240" />
+          <line x1="1400" y1="0" x2="1400" y2="240" />
+        </g>
+
+        <!-- Fret markers -->
+        <g class="markers">
+          <circle cx="250" cy="120" class="fret-mark" />
+          <circle cx="450" cy="120" class="fret-mark" />
+          <circle cx="650" cy="120" class="fret-mark" />
+          <circle cx="850" cy="120" class="fret-mark" />
+          <circle cx="1150" cy="90" class="fret-mark" />
+          <circle cx="1150" cy="150" class="fret-mark" />
+          <circle cx="1350" cy="120" class="fret-mark" />
+        </g>
+      </svg>
+    </div>
+
+    <!-- Footer for Note View -->
+    <footer class="note-footer">
+      <!-- 1. Fretboard mode selector -->
+      <button class="button" id="mode-btn">NOTE</button>
+
+      <!-- 2. Mode-specific context button (visible in scale/chord view) -->
+      <button class="button inactive" id="context-btn">IONIAN</button>
+
+      <!-- 3. Key select -->
+      <button class="button" id="key-btn">
+        <span class="key-line1">C</span>
+        <span class="key-line2">Major</span>
+      </button>
+
+      <!-- 4. Record -->
+      <button class="button" id="record-btn">REC</button>
+
+      <!-- 5. Reset -->
+      <button class="button" id="reset-btn">RESET</button>
+
+      <!-- 6. Settings -->
+      <button class="button" id="settings-btn">SETTINGS</button>
+    </footer>
+
+    <!-- dropdown menu for fretboard selector -->
+    <div class="dropdown-menu hidden" id="mode-dropdown">
+      <div class="dropdown-item">Note</div>
+      <div class="dropdown-item">Scale</div>
+      <div class="dropdown-item">Chord</div>
+    </div>
+
+    <!-- key selector menu -->
+    <div class="key-selector hidden" id="key-selector">
+      <div class="key-header">
+        <span>Song Key</span>
+        <button id="accidental-toggle" class="toggle-btn">♭ <> ♯</button>
+      </div>
+      <div class="key-grid" id="key-grid">
+        <!-- Notes will be injected here -->
+      </div>
+      <div class="key-footer">
+        <button id="major-btn" class="mode-toggle selected">Major</button>
+        <button id="minor-btn" class="mode-toggle">Minor</button>
+      </div>
+    </div>
+  </body>
+</html>

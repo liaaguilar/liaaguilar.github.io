@@ -1,0 +1,228 @@
+/* Layout */
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background-color: #111;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+#fretboard {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #222;
+  border-top: 2px solid #333;
+  border-bottom: 2px solid #333;
+}
+
+#fretboard-svg {
+  width: 90%;
+  height: auto;
+}
+
+.fretboard-bg {
+  fill: #333;
+}
+
+/* Strings */
+.strings line:nth-child(1) {
+  stroke: #ccc;
+  stroke-width: 3.5;
+}
+.strings line:nth-child(2) {
+  stroke: #ccc;
+  stroke-width: 3;
+}
+.strings line:nth-child(3) {
+  stroke: #ccc;
+  stroke-width: 2.5;
+}
+.strings line:nth-child(4) {
+  stroke: #ccc;
+  stroke-width: 2;
+}
+.strings line:nth-child(5) {
+  stroke: #ccc;
+  stroke-width: 1.5;
+}
+.strings line:nth-child(6) {
+  stroke: #ccc;
+  stroke-width: 1;
+}
+
+/* Frets */
+.frets line {
+  stroke: #888;
+}
+
+/* Fret marker dots */
+.fret-mark {
+  fill: white;
+  r: 6;
+}
+
+/* Footer */
+.note-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 1rem;
+  background: #0d0d0d;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+/* Buttons */
+.button {
+  background: #1c1c1c;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  padding: 0.6rem 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 3.5rem;
+  width: clamp(6rem, 20vw, 10rem);
+  flex: 1 1 auto;
+}
+
+.button:hover {
+  background: #2d2d2d;
+  transform: translateY(-1px);
+}
+
+/* Key Button Stacked Style */
+#key-btn {
+  flex-direction: column;
+  line-height: 1;
+  font-weight: bold;
+}
+
+.key-line1 {
+  font-size: 1.1rem;
+}
+
+.key-line2 {
+  font-size: 0.7rem;
+  opacity: 0.7;
+  text-transform: uppercase;
+  margin-top: 0.2rem;
+}
+
+/* Dropdown Panels (no transitions here) */
+.dropdown-menu,
+.key-selector {
+  display: none; /* hidden on load */
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  position: absolute;
+  bottom: 6rem;
+  width: clamp(8rem, 20vw, 10rem);
+  background: #1a1a1a;
+  border: 1px solid #444;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  z-index: 20;
+}
+
+/* Dropdown Items */
+.dropdown-menu {
+  text-align: center;
+}
+
+.dropdown-item {
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+}
+
+.dropdown-item:hover {
+  background: #333;
+}
+
+.dropdown-item.selected {
+  background: #444;
+  font-weight: bold;
+  position: relative;
+}
+
+.dropdown-item.selected::after {
+  content: "✓";
+  position: absolute;
+  right: 1rem;
+  color: #0f0;
+  font-size: 1rem;
+}
+
+/* Key Selector Content */
+.key-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.8rem;
+}
+
+.key-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.toggle-btn {
+  background: #222;
+  border: 1px solid #555;
+  border-radius: 8px;
+  padding: 0.2rem 0.4rem;
+  font-size: 0.7rem;
+  cursor: pointer;
+}
+
+.key-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.2rem;
+}
+
+.key-note {
+  background: #2a2a2a;
+  border: 1px solid #555;
+  padding: 0.5rem 0;
+  text-align: center;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.key-note:hover,
+.key-note.selected {
+  background: #3c6df0;
+  color: white;
+}
+
+.key-footer {
+  display: flex;
+  gap: 0.3rem;
+  justify-content: space-between;
+}
+
+.mode-toggle {
+  flex: 1;
+  padding: 0.4rem 0;
+  border: 1px solid #555;
+  border-radius: 8px;
+  background: #222;
+  cursor: pointer;
+}
+
+.mode-toggle.selected {
+  background: #3c6df0;
+  font-weight: bold;
+  color: white;
+}
