@@ -116,10 +116,10 @@ body {
   margin-top: 0.2rem;
 }
 
-/* Dropdown Panels (no transitions here) */
+/* Dropdown Panels */
 .dropdown-menu,
 .key-selector {
-  display: none; /* hidden on load */
+  display: none;
   opacity: 0;
   transform: translateY(10px);
   transition: opacity 0.25s ease, transform 0.25s ease;
@@ -131,37 +131,33 @@ body {
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
   z-index: 20;
+  overflow: hidden;
 }
 
-/* Dropdown Items */
-.dropdown-menu {
-  text-align: center;
-}
-
-.dropdown-item {
-  padding: 0.75rem 1rem;
+/* Settings / Mode Items (shared layout) */
+.settings-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1rem;
+  font-size: 0.9rem;
   cursor: pointer;
+  user-select: none;
 }
 
-.dropdown-item:hover {
+.settings-item:hover {
   background: #333;
 }
 
-.dropdown-item.selected {
-  background: #444;
-  font-weight: bold;
-  position: relative;
+/* Checkboxes */
+.settings-item input[type="checkbox"],
+.settings-item input[type="radio"] {
+  accent-color: #3c6df0;
+  transform: scale(1.2);
+  cursor: pointer;
 }
 
-.dropdown-item.selected::after {
-  content: "✓";
-  position: absolute;
-  right: 1rem;
-  color: #0f0;
-  font-size: 1rem;
-}
-
-/* Key Selector Content */
+/* Key Selector Layout */
 .key-selector {
   display: flex;
   flex-direction: column;

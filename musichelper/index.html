@@ -82,10 +82,20 @@
     </footer>
 
     <!-- dropdown menu for fretboard selector -->
+    <!-- dropdown menu for fretboard mode selector -->
     <div class="dropdown-menu hidden" id="mode-dropdown">
-      <div class="dropdown-item">Note</div>
-      <div class="dropdown-item">Scale</div>
-      <div class="dropdown-item">Chord</div>
+      <label class="settings-item">
+        <input type="checkbox" name="fretboard-mode" value="Note" />
+        Note
+      </label>
+      <label class="settings-item">
+        <input type="checkbox" name="fretboard-mode" value="Scale" />
+        Scale
+      </label>
+      <label class="settings-item">
+        <input type="checkbox" name="fretboard-mode" value="Chord" />
+        Chord
+      </label>
     </div>
 
     <!-- key selector menu -->
@@ -101,6 +111,22 @@
         <button id="major-btn" class="mode-toggle selected">Major</button>
         <button id="minor-btn" class="mode-toggle">Minor</button>
       </div>
+    </div>
+
+    <!-- Settings dropdown -->
+    <div class="dropdown-menu hidden" id="settings-dropdown">
+      <label class="settings-item">
+        <input type="checkbox" id="color-coded" />
+        Color Coded
+      </label>
+      <label class="settings-item">
+        <input type="checkbox" id="note-names" />
+        Note Labels
+      </label>
+      <label class="settings-item">
+        <input type="checkbox" id="scale-degrees" />
+        Scale Degrees
+      </label>
     </div>
   </body>
 </html>
