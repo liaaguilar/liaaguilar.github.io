@@ -1,7 +1,215 @@
-// ------------------ DROPDOWN ELEMENTS ------------------
-const modeBtn = document.getElementById("mode-btn");
-const dropdown = document.getElementById("mode-dropdown");
+// ------------------ MODE STATE ------------------
+let currentMode = null;
+let currentScaleMode = null;
+let currentChordType = null;
 
+// Reference to all dropdowns for exclusive opening
+const allDropdowns = [
+  document.getElementById("fretboard-dropdown"),
+  document.getElementById("scale-mode-dropdown"),
+  document.getElementById("chord-type-dropdown"),
+  document.getElementById("settings-dropdown"),
+  document.getElementById("key-selector"),
+];
+
+function setMode(mode) {
+  currentMode = mode;
+
+  const fbLine1 = document.querySelector("#fretboard-btn .key-line1");
+  const fbLine2 = document.querySelector("#fretboard-btn .key-line2");
+  if (!mode) {
+    fbLine1.textContent = "FRETBOARD";
+    fbLine2.textContent = "MODE";
+  } else {
+    fbLine1.textContent = mode.toUpperCase();
+    fbLine2.textContent = "VIEW";
+  }
+
+  const contextBtn = document.getElementById("context-btn");
+  if (mode === "scale") {
+    contextBtn.classList.add("visible-soft");
+    contextBtn.classList.remove("hidden-soft");
+    const label = currentScaleMode ? currentScaleMode.toUpperCase() : "SCALE";
+    contextBtn.innerHTML = `<span class="key-line1">${label}</span><span class="key-line2">MODE</span>`;
+  } else if (mode === "chord") {
+    contextBtn.classList.add("visible-soft");
+    contextBtn.classList.remove("hidden-soft");
+    const label = currentChordType ? currentChordType.toUpperCase() : "CHORD";
+    contextBtn.innerHTML = `<span class="key-line1">${label}</span><span class="key-line2">TYPE</span>`;
+  } else {
+    contextBtn.classList.add("hidden-soft");
+    contextBtn.classList.remove("visible-soft");
+  }
+
+  const chordBoxes = document.getElementById("chord-boxes");
+  chordBoxes.classList.toggle("visible-soft", mode === "chord");
+  chordBoxes.classList.toggle("hidden-soft", mode !== "chord");
+
+  document
+    .querySelectorAll("#fretboard-dropdown input[type='checkbox']")
+    .forEach((cb) => {
+      cb.checked = cb.id === mode;
+    });
+}
+
+document.getElementById("reset-btn").addEventListener("click", () => {
+  setMode(null);
+  currentScaleMode = null;
+  currentChordType = null;
+  updateScaleModeLabel();
+  updateChordTypeLabel();
+});
+
+// ------------------ DROPDOWN LOGIC ------------------
+function fadeDropdown(dropdown, show) {
+  // Close all dropdowns before opening a new one
+  allDropdowns.forEach((d) => {
+    if (d !== dropdown) {
+      d.style.opacity = "0";
+      d.style.transform = "translateY(10px)";
+      setTimeout(() => {
+        d.style.display = "none";
+      }, 200);
+    }
+  });
+
+  // Then open/close the target dropdown
+  if (show) {
+    dropdown.style.display = "block";
+    setTimeout(() => {
+      dropdown.style.opacity = "1";
+      dropdown.style.transform = "translateY(0)";
+    }, 10);
+  } else {
+    dropdown.style.opacity = "0";
+    dropdown.style.transform = "translateY(10px)";
+    setTimeout(() => {
+      dropdown.style.display = "none";
+    }, 200);
+  }
+}
+
+// Fretboard Mode Dropdown
+const fretboardBtn = document.getElementById("fretboard-btn");
+const fretboardDropdown = document.getElementById("fretboard-dropdown");
+
+fretboardBtn.addEventListener("click", (e) => {
+  e.stopPropagation();
+  const rect = fretboardBtn.getBoundingClientRect();
+  fretboardDropdown.style.left = `${rect.left}px`;
+  const isOpen = fretboardDropdown.style.display === "block";
+  fadeDropdown(fretboardDropdown, !isOpen);
+});
+
+document
+  .querySelectorAll("#fretboard-dropdown input[type='checkbox']")
+  .forEach((cb) => {
+    cb.addEventListener("change", () => {
+      document
+        .querySelectorAll("#fretboard-dropdown input[type='checkbox']")
+        .forEach((other) => {
+          if (other !== cb) other.checked = false;
+        });
+      setMode(cb.checked ? cb.id : null);
+    });
+  });
+
+// ------------------ CONTEXT BUTTON ------------------
+const contextBtn = document.getElementById("context-btn");
+const scaleModeDropdown = document.getElementById("scale-mode-dropdown");
+const chordTypeDropdown = document.getElementById("chord-type-dropdown");
+
+contextBtn.addEventListener("click", (e) => {
+  e.stopPropagation();
+  const rect = contextBtn.getBoundingClientRect();
+  if (currentMode === "scale") {
+    scaleModeDropdown.style.left = `${rect.left}px`;
+    fadeDropdown(
+      scaleModeDropdown,
+      scaleModeDropdown.style.display !== "block"
+    );
+  } else if (currentMode === "chord") {
+    chordTypeDropdown.style.left = `${rect.left}px`;
+    fadeDropdown(
+      chordTypeDropdown,
+      chordTypeDropdown.style.display !== "block"
+    );
+  }
+});
+
+// ------------------ SCALE MODE DROPDOWN ------------------
+scaleModeDropdown.addEventListener("click", (e) => {
+  if (e.target.tagName !== "INPUT") return;
+  const mode = e.target.value;
+  currentScaleMode = mode;
+
+  document.querySelectorAll("#scale-mode-dropdown input").forEach((cb) => {
+    cb.checked = cb.value === mode;
+  });
+
+  updateScaleModeLabel();
+});
+
+function updateScaleModeLabel() {
+  if (currentMode !== "scale") return;
+  const label = currentScaleMode ? currentScaleMode.toUpperCase() : "SCALE";
+  contextBtn.innerHTML = `<span class="key-line1">${label}</span><span class="key-line2">MODE</span>`;
+}
+
+// ------------------ CHORD TYPE DROPDOWN ------------------
+chordTypeDropdown.addEventListener("click", (e) => {
+  if (e.target.tagName !== "INPUT") return;
+  const type = e.target.value;
+  currentChordType = type;
+
+  document.querySelectorAll("#chord-type-dropdown input").forEach((cb) => {
+    cb.checked = cb.value === type;
+  });
+
+  updateChordTypeLabel();
+
+  // Future functionality placeholder:
+  // if (type === "quartal") { do something }
+});
+
+function updateChordTypeLabel() {
+  if (currentMode !== "chord") return;
+  const label = currentChordType ? currentChordType.toUpperCase() : "CHORD";
+  contextBtn.innerHTML = `<span class="key-line1">${label}</span><span class="key-line2">TYPE</span>`;
+}
+
+// ------------------ SETTINGS DROPDOWN ------------------
+const settingsBtn = document.getElementById("settings-btn");
+const settingsDropdown = document.getElementById("settings-dropdown");
+
+const settingsState = {
+  "color-coded": false,
+  "note-names": false,
+  "scale-degrees": false,
+};
+
+settingsBtn.addEventListener("click", (e) => {
+  e.stopPropagation();
+  const rect = settingsBtn.getBoundingClientRect();
+  settingsDropdown.style.left = `${rect.left}px`;
+  const isOpen = settingsDropdown.style.display === "block";
+  fadeDropdown(settingsDropdown, !isOpen);
+});
+
+document.querySelectorAll("#settings-dropdown input").forEach((cb) => {
+  cb.addEventListener("change", () => {
+    settingsState[cb.id] = cb.checked;
+    updateSettingsLabel();
+  });
+});
+
+function updateSettingsLabel() {
+  const activeCount = Object.values(settingsState).filter(Boolean).length;
+  settingsBtn.textContent =
+    activeCount > 0 ? `SETTINGS (${activeCount})` : "SETTINGS";
+}
+
+// ------------------ KEY SELECTOR ------------------
 const keyBtn = document.getElementById("key-btn");
 const keySelector = document.getElementById("key-selector");
 const keyGrid = document.getElementById("key-grid");
@@ -9,22 +217,9 @@ const majorBtn = document.getElementById("major-btn");
 const minorBtn = document.getElementById("minor-btn");
 const accToggle = document.getElementById("accidental-toggle");
 
-const settingsBtn = document.getElementById("settings-btn");
-const settingsDropdown = document.getElementById("settings-dropdown");
-
-// ------------------ STATE ------------------
-let openPanel = null;
-
 let useSharps = true;
 let scaleType = "Major";
 let selectedNote = "C";
-let fretboardMode = "Note";
-
-const settings = {
-  colorCoded: false,
-  noteNames: false,
-  scaleDegrees: false,
-};
 
 const sharpNotes = [
   "C",
@@ -55,73 +250,7 @@ const flatNotes = [
   "B",
 ];
 
-// ------------------ FADE LOGIC ------------------
-function fadeDropdown(el, show = true) {
-  if (show) {
-    if (openPanel && openPanel !== el) {
-      fadeDropdown(openPanel, false);
-    }
-
-    el.style.display = "block";
-    el.style.pointerEvents = "auto";
-    el.style.opacity = "0";
-    el.style.transform = "translateY(10px)";
-    el.offsetHeight;
-
-    requestAnimationFrame(() => {
-      el.style.transition = "opacity 0.25s ease, transform 0.25s ease";
-      el.style.opacity = "1";
-      el.style.transform = "translateY(0)";
-    });
-
-    openPanel = el;
-  } else {
-    el.style.transition = "opacity 0.25s ease, transform 0.25s ease";
-    el.style.opacity = "0";
-    el.style.transform = "translateY(10px)";
-    el.style.pointerEvents = "none";
-
-    setTimeout(() => {
-      el.style.display = "none";
-      el.style.transition = "";
-      if (openPanel === el) openPanel = null;
-    }, 250);
-  }
-}
-
-// ------------------ FRETBOARD MODE DROPDOWN ------------------
-modeBtn.addEventListener("click", (e) => {
-  e.stopPropagation();
-  const rect = modeBtn.getBoundingClientRect();
-  dropdown.style.left = `${rect.left}px`;
-  const isOpen = dropdown.style.display === "block";
-  fadeDropdown(dropdown, !isOpen);
-});
-
-document.querySelectorAll('input[name="mode"]').forEach((radio) => {
-  radio.addEventListener("change", (e) => {
-    fretboardMode = e.target.value;
-    modeBtn.textContent = fretboardMode;
-    fadeDropdown(dropdown, false);
-
-    console.log("Fretboard mode changed to:", fretboardMode);
-    // TODO: switchToMode(fretboardMode.toLowerCase());
-  });
-});
-
-// ------------------ KEY SELECTOR LOGIC ------------------
-keyBtn.addEventListener("click", (e) => {
-  e.stopPropagation();
-  const rect = keyBtn.getBoundingClientRect();
-  const boxWidth = 128;
-  const left = Math.min(rect.left, window.innerWidth - boxWidth - 8);
-  keySelector.style.left = `${left}px`;
-
-  const isOpen = keySelector.style.display === "block";
-  fadeDropdown(keySelector, !isOpen);
-});
-
-function renderNoteGrid() {
+function renderNotes() {
   const notes = useSharps ? sharpNotes : flatNotes;
   keyGrid.innerHTML = "";
   notes.forEach((note) => {
@@ -129,81 +258,53 @@ function renderNoteGrid() {
     div.classList.add("key-note");
     if (note === selectedNote) div.classList.add("selected");
     div.textContent = note;
-    div.addEventListener("click", (e) => {
-      e.stopPropagation();
-      selectedNote = note;
-      document.querySelector("#key-btn .key-line1").textContent = selectedNote;
-      document.querySelector("#key-btn .key-line2").textContent = scaleType;
-      renderNoteGrid();
-    });
     keyGrid.appendChild(div);
   });
 }
+renderNotes();
 
-accToggle.addEventListener("click", (e) => {
+keyBtn.addEventListener("click", (e) => {
   e.stopPropagation();
-  useSharps = !useSharps;
-  renderNoteGrid();
+  const rect = keyBtn.getBoundingClientRect();
+  keySelector.style.left = `${rect.left}px`;
+  const isOpen = keySelector.style.display === "block";
+  fadeDropdown(keySelector, !isOpen);
 });
 
-majorBtn.addEventListener("click", (e) => {
-  e.stopPropagation();
-  scaleType = "Major";
-  document.querySelector("#key-btn .key-line1").textContent = selectedNote;
-  document.querySelector("#key-btn .key-line2").textContent = scaleType;
-  majorBtn.classList.add("selected");
-  minorBtn.classList.remove("selected");
-});
-
-minorBtn.addEventListener("click", (e) => {
-  e.stopPropagation();
-  scaleType = "Minor";
-  document.querySelector("#key-btn .key-line1").textContent = selectedNote;
-  document.querySelector("#key-btn .key-line2").textContent = scaleType;
-  minorBtn.classList.add("selected");
-  majorBtn.classList.remove("selected");
-});
-
-renderNoteGrid();
-
-// ------------------ SETTINGS CHECKBOXES ------------------
-settingsBtn.addEventListener("click", (e) => {
-  e.stopPropagation();
-  const rect = settingsBtn.getBoundingClientRect();
-  settingsDropdown.style.left = `${rect.left}px`;
-  const isOpen = settingsDropdown.style.display === "block";
-  fadeDropdown(settingsDropdown, !isOpen);
-});
-
-document.getElementById("color-coded").addEventListener("change", (e) => {
-  settings.colorCoded = e.target.checked;
-  console.log("Color Coded:", settings.colorCoded);
-});
-
-document.getElementById("note-names").addEventListener("change", (e) => {
-  settings.noteNames = e.target.checked;
-  console.log("Note Names:", settings.noteNames);
-});
-
-document.getElementById("scale-degrees").addEventListener("change", (e) => {
-  settings.scaleDegrees = e.target.checked;
-  console.log("Scale Degrees:", settings.scaleDegrees);
-});
-
-// ------------------ GLOBAL CLOSE HANDLER ------------------
-document.addEventListener("click", (e) => {
-  if (
-    openPanel &&
-    !openPanel.contains(e.target) &&
-    !modeBtn.contains(e.target) &&
-    !keyBtn.contains(e.target) &&
-    !settingsBtn.contains(e.target)
-  ) {
-    fadeDropdown(openPanel, false);
+keyGrid.addEventListener("click", (e) => {
+  if (e.target.classList.contains("key-note")) {
+    selectedNote = e.target.textContent;
+    updateKeyUI();
   }
 });
 
-// ------------------ AUDIO RECORDING ------------------
+function updateKeyUI() {
+  renderNotes();
+  const keyBtn = document.getElementById("key-btn");
+  keyBtn.querySelector(".key-line1").textContent = selectedNote;
+  keyBtn.querySelector(".key-line2").textContent = scaleType;
+}
+
+accToggle.addEventListener("click", () => {
+  useSharps = !useSharps;
+  renderNotes();
+});
+
+majorBtn.addEventListener("click", () => {
+  scaleType = "Major";
+  majorBtn.classList.add("selected");
+  minorBtn.classList.remove("selected");
+  updateKeyUI();
+});
+
+minorBtn.addEventListener("click", () => {
+  scaleType = "Minor";
+  minorBtn.classList.add("selected");
+  majorBtn.classList.remove("selected");
+  updateKeyUI();
+});
+
+// ------------------ AUDIO LISTENER ------------------
 const recordBtn = document.getElementById("record-btn");
 let mediaRecorder = null;
 let audioChunks = [];
@@ -241,3 +342,12 @@ recordBtn.addEventListener("click", async () => {
     recordBtn.textContent = "REC";
   }
 });
+
+// ------------------ CLOSE ALL DROPDOWNS ON OUTSIDE CLICK ------------------
+document.addEventListener("click", () => {
+  allDropdowns.forEach((d) => fadeDropdown(d, false));
+});
+
+allDropdowns.forEach((el) =>
+  el.addEventListener("click", (e) => e.stopPropagation())
+);

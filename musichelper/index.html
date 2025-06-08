@@ -10,110 +10,288 @@
     <script src="script.js" defer></script>
   </head>
   <body>
-    <!-- Main Fretboard Area -->
-    <div id="fretboard">
-      <svg viewBox="0 0 1500 240" id="fretboard-svg">
-        <rect x="0" y="0" width="1500" height="240" class="fretboard-bg" />
+    <div id="app-wrapper">
+      <!-- Chord Boxes (Chord Mode Only) -->
+      <div id="chord-boxes" class="hidden-soft">
+        <div class="chord-box"></div>
+        <div class="chord-box"></div>
+        <div class="chord-box"></div>
+        <div class="chord-box"></div>
+        <div class="chord-box"></div>
+        <div class="chord-box"></div>
+        <div class="chord-box"></div>
+      </div>
 
-        <!-- Strings -->
-        <g class="strings">
-          <line x1="0" y1="210" x2="1500" y2="210" />
-          <line x1="0" y1="170" x2="1500" y2="170" />
-          <line x1="0" y1="130" x2="1500" y2="130" />
-          <line x1="0" y1="90" x2="1500" y2="90" />
-          <line x1="0" y1="50" x2="1500" y2="50" />
-          <line x1="0" y1="10" x2="1500" y2="10" />
-        </g>
+      <!-- Main Fretboard Area -->
+      <!-- Main Fretboard Area -->
+      <!-- Main Fretboard Area -->
+      <div id="fretboard">
+        <svg viewBox="0 0 1500 280" id="fretboard-svg">
+          <rect x="0" y="0" width="1500" height="280" class="fretboard-bg" />
 
-        <!-- Frets -->
-        <g class="frets">
-          <line x1="0" y1="0" x2="0" y2="240" />
-          <line x1="100" y1="0" x2="100" y2="240" />
-          <line x1="200" y1="0" x2="200" y2="240" />
-          <line x1="300" y1="0" x2="300" y2="240" />
-          <line x1="400" y1="0" x2="400" y2="240" />
-          <line x1="500" y1="0" x2="500" y2="240" />
-          <line x1="600" y1="0" x2="600" y2="240" />
-          <line x1="700" y1="0" x2="700" y2="240" />
-          <line x1="800" y1="0" x2="800" y2="240" />
-          <line x1="900" y1="0" x2="900" y2="240" />
-          <line x1="1000" y1="0" x2="1000" y2="240" />
-          <line x1="1100" y1="0" x2="1100" y2="240" />
-          <line x1="1200" y1="0" x2="1200" y2="240" />
-          <line x1="1300" y1="0" x2="1300" y2="240" />
-          <line x1="1400" y1="0" x2="1400" y2="240" />
-        </g>
+          <!-- Strings -->
+          <g class="strings">
+            <line x1="0" y1="240" x2="1500" y2="240" />
+            <line x1="0" y1="200" x2="1500" y2="200" />
+            <line x1="0" y1="160" x2="1500" y2="160" />
+            <line x1="0" y1="120" x2="1500" y2="120" />
+            <line x1="0" y1="80" x2="1500" y2="80" />
+            <line x1="0" y1="40" x2="1500" y2="40" />
+          </g>
 
-        <!-- Fret markers -->
-        <g class="markers">
-          <circle cx="250" cy="120" class="fret-mark" />
-          <circle cx="450" cy="120" class="fret-mark" />
-          <circle cx="650" cy="120" class="fret-mark" />
-          <circle cx="850" cy="120" class="fret-mark" />
-          <circle cx="1150" cy="90" class="fret-mark" />
-          <circle cx="1150" cy="150" class="fret-mark" />
-          <circle cx="1350" cy="120" class="fret-mark" />
-        </g>
-      </svg>
+          <!-- Note Guide Circles -->
+          <g class="note-guides">
+            <!-- String Y-positions -->
+            <!-- For each string (y), place a circle at each fret center (x) -->
+            <!-- y = 240 -->
+            <circle cx="50" cy="240" r="6" class="note-guide" />
+            <circle cx="150" cy="240" r="6" class="note-guide" />
+            <circle cx="250" cy="240" r="6" class="note-guide" />
+            <circle cx="350" cy="240" r="6" class="note-guide" />
+            <circle cx="450" cy="240" r="6" class="note-guide" />
+            <circle cx="550" cy="240" r="6" class="note-guide" />
+            <circle cx="650" cy="240" r="6" class="note-guide" />
+            <circle cx="750" cy="240" r="6" class="note-guide" />
+            <circle cx="850" cy="240" r="6" class="note-guide" />
+            <circle cx="950" cy="240" r="6" class="note-guide" />
+            <circle cx="1050" cy="240" r="6" class="note-guide" />
+            <circle cx="1150" cy="240" r="6" class="note-guide" />
+            <circle cx="1250" cy="240" r="6" class="note-guide" />
+            <circle cx="1350" cy="240" r="6" class="note-guide" />
+            <circle cx="1450" cy="240" r="6" class="note-guide" />
+
+            <!-- y = 200 -->
+            <circle cx="50" cy="200" r="6" class="note-guide" />
+            <circle cx="150" cy="200" r="6" class="note-guide" />
+            <circle cx="250" cy="200" r="6" class="note-guide" />
+            <circle cx="350" cy="200" r="6" class="note-guide" />
+            <circle cx="450" cy="200" r="6" class="note-guide" />
+            <circle cx="550" cy="200" r="6" class="note-guide" />
+            <circle cx="650" cy="200" r="6" class="note-guide" />
+            <circle cx="750" cy="200" r="6" class="note-guide" />
+            <circle cx="850" cy="200" r="6" class="note-guide" />
+            <circle cx="950" cy="200" r="6" class="note-guide" />
+            <circle cx="1050" cy="200" r="6" class="note-guide" />
+            <circle cx="1150" cy="200" r="6" class="note-guide" />
+            <circle cx="1250" cy="200" r="6" class="note-guide" />
+            <circle cx="1350" cy="200" r="6" class="note-guide" />
+            <circle cx="1450" cy="200" r="6" class="note-guide" />
+
+            <!-- y = 160 -->
+            <circle cx="50" cy="160" r="6" class="note-guide" />
+            <circle cx="150" cy="160" r="6" class="note-guide" />
+            <circle cx="250" cy="160" r="6" class="note-guide" />
+            <circle cx="350" cy="160" r="6" class="note-guide" />
+            <circle cx="450" cy="160" r="6" class="note-guide" />
+            <circle cx="550" cy="160" r="6" class="note-guide" />
+            <circle cx="650" cy="160" r="6" class="note-guide" />
+            <circle cx="750" cy="160" r="6" class="note-guide" />
+            <circle cx="850" cy="160" r="6" class="note-guide" />
+            <circle cx="950" cy="160" r="6" class="note-guide" />
+            <circle cx="1050" cy="160" r="6" class="note-guide" />
+            <circle cx="1150" cy="160" r="6" class="note-guide" />
+            <circle cx="1250" cy="160" r="6" class="note-guide" />
+            <circle cx="1350" cy="160" r="6" class="note-guide" />
+            <circle cx="1450" cy="160" r="6" class="note-guide" />
+
+            <!-- y = 120 -->
+            <circle cx="50" cy="120" r="6" class="note-guide" />
+            <circle cx="150" cy="120" r="6" class="note-guide" />
+            <circle cx="250" cy="120" r="6" class="note-guide" />
+            <circle cx="350" cy="120" r="6" class="note-guide" />
+            <circle cx="450" cy="120" r="6" class="note-guide" />
+            <circle cx="550" cy="120" r="6" class="note-guide" />
+            <circle cx="650" cy="120" r="6" class="note-guide" />
+            <circle cx="750" cy="120" r="6" class="note-guide" />
+            <circle cx="850" cy="120" r="6" class="note-guide" />
+            <circle cx="950" cy="120" r="6" class="note-guide" />
+            <circle cx="1050" cy="120" r="6" class="note-guide" />
+            <circle cx="1150" cy="120" r="6" class="note-guide" />
+            <circle cx="1250" cy="120" r="6" class="note-guide" />
+            <circle cx="1350" cy="120" r="6" class="note-guide" />
+            <circle cx="1450" cy="120" r="6" class="note-guide" />
+
+            <!-- y = 80 -->
+            <circle cx="50" cy="80" r="6" class="note-guide" />
+            <circle cx="150" cy="80" r="6" class="note-guide" />
+            <circle cx="250" cy="80" r="6" class="note-guide" />
+            <circle cx="350" cy="80" r="6" class="note-guide" />
+            <circle cx="450" cy="80" r="6" class="note-guide" />
+            <circle cx="550" cy="80" r="6" class="note-guide" />
+            <circle cx="650" cy="80" r="6" class="note-guide" />
+            <circle cx="750" cy="80" r="6" class="note-guide" />
+            <circle cx="850" cy="80" r="6" class="note-guide" />
+            <circle cx="950" cy="80" r="6" class="note-guide" />
+            <circle cx="1050" cy="80" r="6" class="note-guide" />
+            <circle cx="1150" cy="80" r="6" class="note-guide" />
+            <circle cx="1250" cy="80" r="6" class="note-guide" />
+            <circle cx="1350" cy="80" r="6" class="note-guide" />
+            <circle cx="1450" cy="80" r="6" class="note-guide" />
+
+            <!-- y = 40 -->
+            <circle cx="50" cy="40" r="6" class="note-guide" />
+            <circle cx="150" cy="40" r="6" class="note-guide" />
+            <circle cx="250" cy="40" r="6" class="note-guide" />
+            <circle cx="350" cy="40" r="6" class="note-guide" />
+            <circle cx="450" cy="40" r="6" class="note-guide" />
+            <circle cx="550" cy="40" r="6" class="note-guide" />
+            <circle cx="650" cy="40" r="6" class="note-guide" />
+            <circle cx="750" cy="40" r="6" class="note-guide" />
+            <circle cx="850" cy="40" r="6" class="note-guide" />
+            <circle cx="950" cy="40" r="6" class="note-guide" />
+            <circle cx="1050" cy="40" r="6" class="note-guide" />
+            <circle cx="1150" cy="40" r="6" class="note-guide" />
+            <circle cx="1250" cy="40" r="6" class="note-guide" />
+            <circle cx="1350" cy="40" r="6" class="note-guide" />
+            <circle cx="1450" cy="40" r="6" class="note-guide" />
+          </g>
+
+          <!-- Frets -->
+          <g class="frets">
+            <line x1="0" y1="0" x2="0" y2="280" />
+            <line x1="100" y1="0" x2="100" y2="280" />
+            <line x1="200" y1="0" x2="200" y2="280" />
+            <line x1="300" y1="0" x2="300" y2="280" />
+            <line x1="400" y1="0" x2="400" y2="280" />
+            <line x1="500" y1="0" x2="500" y2="280" />
+            <line x1="600" y1="0" x2="600" y2="280" />
+            <line x1="700" y1="0" x2="700" y2="280" />
+            <line x1="800" y1="0" x2="800" y2="280" />
+            <line x1="900" y1="0" x2="900" y2="280" />
+            <line x1="1000" y1="0" x2="1000" y2="280" />
+            <line x1="1100" y1="0" x2="1100" y2="280" />
+            <line x1="1200" y1="0" x2="1200" y2="280" />
+            <line x1="1300" y1="0" x2="1300" y2="280" />
+            <line x1="1400" y1="0" x2="1400" y2="280" />
+          </g>
+
+          <!-- Markers -->
+          <g class="markers">
+            <circle cx="250" cy="140" class="fret-mark" />
+            <circle cx="450" cy="140" class="fret-mark" />
+            <circle cx="650" cy="140" class="fret-mark" />
+            <circle cx="850" cy="140" class="fret-mark" />
+            <circle cx="1150" cy="100" class="fret-mark" />
+            <circle cx="1150" cy="180" class="fret-mark" />
+            <circle cx="1350" cy="140" class="fret-mark" />
+          </g>
+        </svg>
+      </div>
+
+      <!-- Footer -->
+      <footer class="note-footer">
+        <button class="button" id="fretboard-btn">
+          <span class="key-line1">FRETBOARD</span>
+          <span class="key-line2">MODE</span>
+        </button>
+
+        <button class="button hidden-soft" id="context-btn">
+          <span class="key-line1">SCALE</span>
+          <span class="key-line2">MODE</span>
+        </button>
+
+        <button class="button" id="key-btn">
+          <span class="key-line1">C</span>
+          <span class="key-line2">Major</span>
+        </button>
+
+        <button class="button" id="record-btn">REC</button>
+        <button class="button" id="reset-btn">RESET</button>
+        <button class="button" id="settings-btn">SETTINGS</button>
+      </footer>
     </div>
 
-    <!-- Footer for Note View -->
-    <footer class="note-footer">
-      <!-- 1. Fretboard mode selector -->
-      <button class="button" id="mode-btn">NOTE</button>
-
-      <!-- 2. Mode-specific context button (visible in scale/chord view) -->
-      <button class="button inactive" id="context-btn">IONIAN</button>
-
-      <!-- 3. Key select -->
-      <button class="button" id="key-btn">
-        <span class="key-line1">C</span>
-        <span class="key-line2">Major</span>
-      </button>
-
-      <!-- 4. Record -->
-      <button class="button" id="record-btn">REC</button>
-
-      <!-- 5. Reset -->
-      <button class="button" id="reset-btn">RESET</button>
-
-      <!-- 6. Settings -->
-      <button class="button" id="settings-btn">SETTINGS</button>
-    </footer>
-
-    <!-- dropdown menu for fretboard selector -->
-    <!-- dropdown menu for fretboard mode selector -->
-    <div class="dropdown-menu hidden" id="mode-dropdown">
-      <label class="settings-item">
-        <input type="checkbox" name="fretboard-mode" value="Note" />
+    <!-- Fretboard Mode Dropdown -->
+    <div class="dropdown-menu hidden" id="fretboard-dropdown">
+      <label class="fretboard-item">
+        <input type="checkbox" id="note" />
         Note
       </label>
-      <label class="settings-item">
-        <input type="checkbox" name="fretboard-mode" value="Scale" />
+      <label class="fretboard-item">
+        <input type="checkbox" id="scale" />
         Scale
       </label>
-      <label class="settings-item">
-        <input type="checkbox" name="fretboard-mode" value="Chord" />
+      <label class="fretboard-item">
+        <input type="checkbox" id="chord" />
         Chord
       </label>
     </div>
 
-    <!-- key selector menu -->
+    <!-- Scale Mode Dropdown (Scale View Only) -->
+    <div class="dropdown-menu hidden" id="scale-mode-dropdown">
+      <label class="fretboard-item"
+        ><input type="checkbox" value="ionian" /> Ionian</label
+      >
+      <label class="fretboard-item"
+        ><input type="checkbox" value="dorian" /> Dorian</label
+      >
+      <label class="fretboard-item"
+        ><input type="checkbox" value="phrygian" /> Phrygian</label
+      >
+      <label class="fretboard-item"
+        ><input type="checkbox" value="lydian" /> Lydian</label
+      >
+      <label class="fretboard-item"
+        ><input type="checkbox" value="mixolydian" /> Mixolydian</label
+      >
+      <label class="fretboard-item"
+        ><input type="checkbox" value="aeolian" /> Aeolian</label
+      >
+      <label class="fretboard-item"
+        ><input type="checkbox" value="locrian" /> Locrian</label
+      >
+    </div>
+
+    <!-- Chord Type Dropdown (Chord View Only) -->
+    <div class="dropdown-menu hidden" id="chord-type-dropdown">
+      <div class="chord-grid">
+        <label class="fretboard-item"
+          ><input type="checkbox" value="triad" /> Basic Triads</label
+        >
+        <label class="fretboard-item"
+          ><input type="checkbox" value="barre" /> Barre Chords</label
+        >
+        <label class="fretboard-item"
+          ><input type="checkbox" value="7th" /> 7th</label
+        >
+        <label class="fretboard-item"
+          ><input type="checkbox" value="9th" /> 9th</label
+        >
+        <label class="fretboard-item"
+          ><input type="checkbox" value="11th" /> 11th</label
+        >
+        <label class="fretboard-item"
+          ><input type="checkbox" value="13th" /> 13th</label
+        >
+        <label class="fretboard-item"
+          ><input type="checkbox" value="add9" /> Add9</label
+        >
+        <label class="fretboard-item"
+          ><input type="checkbox" value="sus" /> Sus</label
+        >
+        <label class="fretboard-item"
+          ><input type="checkbox" value="shell" /> Shell Voicing</label
+        >
+        <label class="fretboard-item"
+          ><input type="checkbox" value="quartal" /> Quartal Voicing</label
+        >
+      </div>
+    </div>
+
+    <!-- Key Selector -->
     <div class="key-selector hidden" id="key-selector">
       <div class="key-header">
         <span>Song Key</span>
         <button id="accidental-toggle" class="toggle-btn">♭ <> ♯</button>
       </div>
-      <div class="key-grid" id="key-grid">
-        <!-- Notes will be injected here -->
-      </div>
+      <div class="key-grid" id="key-grid"></div>
       <div class="key-footer">
         <button id="major-btn" class="mode-toggle selected">Major</button>
         <button id="minor-btn" class="mode-toggle">Minor</button>
       </div>
     </div>
 
-    <!-- Settings dropdown -->
+    <!-- Settings Dropdown -->
     <div class="dropdown-menu hidden" id="settings-dropdown">
       <label class="settings-item">
         <input type="checkbox" id="color-coded" />
