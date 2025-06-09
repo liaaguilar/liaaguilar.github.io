@@ -1,18 +1,47 @@
+import { PitchDetector } from "https://esm.sh/pitchy@4";
+
 // ------------------ MODE STATE ------------------
 let currentMode = null;
 let currentScaleMode = null;
-let currentChordType = null;
+let keyChangedWhileInactive = false;
+
+const noteColors = {
+  C: "#ff6b6b", // soft red
+  "C#": "#e05757", // darker red
+  Db: "#e05757",
+
+  D: "#ffb347", // warm orange
+  "D#": "#e39e34", // darker golden-orange
+  Eb: "#e39e34",
+
+  E: "#f9e15b", // bright yellow (still readable)
+  F: "#91d6f2", // sky blue
+  "F#": "#75c4e6", // darker sky blue
+  Gb: "#75c4e6",
+
+  G: "#59caa2", // minty green
+  "G#": "#4ab28f", // deeper mint green
+  Ab: "#4ab28f",
+
+  A: "#ffac81", // pastel coral
+  "A#": "#e5946d", // warmer coral
+  Bb: "#e5946d",
+
+  B: "#b197fc", // soft lavender
+};
 
 // Reference to all dropdowns for exclusive opening
 const allDropdowns = [
   document.getElementById("fretboard-dropdown"),
   document.getElementById("scale-mode-dropdown"),
-  document.getElementById("chord-type-dropdown"),
   document.getElementById("settings-dropdown"),
   document.getElementById("key-selector"),
 ];
 
 function setMode(mode) {
+  // Always clear all notes when switching modes
+  clearFretboard();
+
   currentMode = mode;
 
   const fbLine1 = document.querySelector("#fretboard-btn .key-line1");
@@ -31,33 +60,59 @@ function setMode(mode) {
     contextBtn.classList.remove("hidden-soft");
     const label = currentScaleMode ? currentScaleMode.toUpperCase() : "SCALE";
     contextBtn.innerHTML = `<span class="key-line1">${label}</span><span class="key-line2">MODE</span>`;
-  } else if (mode === "chord") {
-    contextBtn.classList.add("visible-soft");
-    contextBtn.classList.remove("hidden-soft");
-    const label = currentChordType ? currentChordType.toUpperCase() : "CHORD";
-    contextBtn.innerHTML = `<span class="key-line1">${label}</span><span class="key-line2">TYPE</span>`;
   } else {
     contextBtn.classList.add("hidden-soft");
     contextBtn.classList.remove("visible-soft");
   }
 
-  const chordBoxes = document.getElementById("chord-boxes");
-  chordBoxes.classList.toggle("visible-soft", mode === "chord");
-  chordBoxes.classList.toggle("hidden-soft", mode !== "chord");
+  const scaleToggle = document.getElementById("scale-type-toggle");
+  if (mode === "scale") {
+    scaleToggle.style.opacity = "0";
+    scaleToggle.style.pointerEvents = "none";
+  } else {
+    scaleToggle.style.opacity = "1";
+    scaleToggle.style.pointerEvents = "auto";
+  }
 
   document
     .querySelectorAll("#fretboard-dropdown input[type='checkbox']")
     .forEach((cb) => {
       cb.checked = cb.id === mode;
     });
+
+  if (mode === "note" && keyChangedWhileInactive) {
+    updateFretboard();
+  }
+
+  updateKeyUI();
+
+  if (mode === "note") {
+    updateFretboard();
+  } else if (mode === "scale") {
+    updateScaleFretboard();
+  }
 }
 
 document.getElementById("reset-btn").addEventListener("click", () => {
   setMode(null);
   currentScaleMode = null;
-  currentChordType = null;
+  selectedNote = null;
+  scaleType = null;
   updateScaleModeLabel();
-  updateChordTypeLabel();
+  updateKeyUI();
+  updateFretboard();
+
+  // Reset major/minor button styles
+  majorBtn.classList.remove("selected");
+  minorBtn.classList.remove("selected");
+
+  // Clear all note guides + labels
+  document.querySelectorAll(".note-guide").forEach((group) => {
+    group.style.opacity = "0";
+    group.style.pointerEvents = "none";
+    const text = group.querySelector("text");
+    if (text) text.style.opacity = "0";
+  });
 });
 
 // ------------------ DROPDOWN LOGIC ------------------
@@ -117,7 +172,6 @@ document
 // ------------------ CONTEXT BUTTON ------------------
 const contextBtn = document.getElementById("context-btn");
 const scaleModeDropdown = document.getElementById("scale-mode-dropdown");
-const chordTypeDropdown = document.getElementById("chord-type-dropdown");
 
 contextBtn.addEventListener("click", (e) => {
   e.stopPropagation();
@@ -127,12 +181,6 @@ contextBtn.addEventListener("click", (e) => {
     fadeDropdown(
       scaleModeDropdown,
       scaleModeDropdown.style.display !== "block"
-    );
-  } else if (currentMode === "chord") {
-    chordTypeDropdown.style.left = `${rect.left}px`;
-    fadeDropdown(
-      chordTypeDropdown,
-      chordTypeDropdown.style.display !== "block"
     );
   }
 });
@@ -148,34 +196,13 @@ scaleModeDropdown.addEventListener("click", (e) => {
   });
 
   updateScaleModeLabel();
+  updateScaleFretboard(); // ✅ ADDED
 });
 
 function updateScaleModeLabel() {
   if (currentMode !== "scale") return;
   const label = currentScaleMode ? currentScaleMode.toUpperCase() : "SCALE";
   contextBtn.innerHTML = `<span class="key-line1">${label}</span><span class="key-line2">MODE</span>`;
-}
-
-// ------------------ CHORD TYPE DROPDOWN ------------------
-chordTypeDropdown.addEventListener("click", (e) => {
-  if (e.target.tagName !== "INPUT") return;
-  const type = e.target.value;
-  currentChordType = type;
-
-  document.querySelectorAll("#chord-type-dropdown input").forEach((cb) => {
-    cb.checked = cb.value === type;
-  });
-
-  updateChordTypeLabel();
-
-  // Future functionality placeholder:
-  // if (type === "quartal") { do something }
-});
-
-function updateChordTypeLabel() {
-  if (currentMode !== "chord") return;
-  const label = currentChordType ? currentChordType.toUpperCase() : "CHORD";
-  contextBtn.innerHTML = `<span class="key-line1">${label}</span><span class="key-line2">TYPE</span>`;
 }
 
 // ------------------ SETTINGS DROPDOWN ------------------
@@ -185,7 +212,6 @@ const settingsDropdown = document.getElementById("settings-dropdown");
 const settingsState = {
   "color-coded": false,
   "note-names": false,
-  "scale-degrees": false,
 };
 
 settingsBtn.addEventListener("click", (e) => {
@@ -218,8 +244,8 @@ const minorBtn = document.getElementById("minor-btn");
 const accToggle = document.getElementById("accidental-toggle");
 
 let useSharps = true;
-let scaleType = "Major";
-let selectedNote = "C";
+let scaleType = null;
+let selectedNote = null;
 
 const sharpNotes = [
   "C",
@@ -275,14 +301,27 @@ keyGrid.addEventListener("click", (e) => {
   if (e.target.classList.contains("key-note")) {
     selectedNote = e.target.textContent;
     updateKeyUI();
+
+    // ✅ Add this
+    if (currentMode === "scale") {
+      updateScaleFretboard();
+    }
   }
 });
 
 function updateKeyUI() {
   renderNotes();
   const keyBtn = document.getElementById("key-btn");
-  keyBtn.querySelector(".key-line1").textContent = selectedNote;
-  keyBtn.querySelector(".key-line2").textContent = scaleType;
+  const line1 = keyBtn.querySelector(".key-line1");
+  const line2 = keyBtn.querySelector(".key-line2");
+
+  line1.textContent = selectedNote || "CHOOSE";
+
+  if (currentMode === "scale") {
+    line2.textContent = "KEY";
+  } else {
+    line2.textContent = scaleType || "KEY";
+  }
 }
 
 accToggle.addEventListener("click", () => {
@@ -306,40 +345,153 @@ minorBtn.addEventListener("click", () => {
 
 // ------------------ AUDIO LISTENER ------------------
 const recordBtn = document.getElementById("record-btn");
-let mediaRecorder = null;
-let audioChunks = [];
-let isRecording = false;
+
+let isListening = false;
+let audioContext, analyser, sourceNode, scriptNode, pitchDetector;
+let buffer = new Float32Array(2048);
+const noteFrequency = {};
+let allDetectedNotes = [];
+
+// Converts pitch to note name
+function pitchToNoteName(pitch) {
+  const A4 = 440;
+  const semitone = 12 * Math.log2(pitch / A4);
+  const midi = Math.round(semitone + 69);
+  const notes = [
+    "C",
+    "C#",
+    "D",
+    "D#",
+    "E",
+    "F",
+    "F#",
+    "G",
+    "G#",
+    "A",
+    "A#",
+    "B",
+  ];
+  return notes[midi % 12];
+}
+
+// Guess the key based on most common notes
+function guessKeyFromNotes(noteCounts) {
+  const majorFormulas = {
+    C: ["C", "D", "E", "F", "G", "A", "B"],
+    "C#": ["C#", "D#", "F", "F#", "G#", "A#", "C"],
+    D: ["D", "E", "F#", "G", "A", "B", "C#"],
+    "D#": ["D#", "F", "G", "G#", "A#", "C", "D"],
+    E: ["E", "F#", "G#", "A", "B", "C#", "D#"],
+    F: ["F", "G", "A", "A#", "C", "D", "E"],
+    "F#": ["F#", "G#", "A#", "B", "C#", "D#", "F"],
+    G: ["G", "A", "B", "C", "D", "E", "F#"],
+    "G#": ["G#", "A#", "C", "C#", "D#", "F", "G"],
+    A: ["A", "B", "C#", "D", "E", "F#", "G#"],
+    "A#": ["A#", "C", "D", "D#", "F", "G", "A"],
+    B: ["B", "C#", "D#", "E", "F#", "G#", "A#"],
+  };
+
+  const minorFormulas = {
+    A: ["A", "B", "C", "D", "E", "F", "G"],
+    "A#": ["A#", "C", "C#", "D#", "F", "F#", "G#"],
+    B: ["B", "C#", "D", "E", "F#", "G", "A"],
+    C: ["C", "D", "D#", "F", "G", "G#", "A#"],
+    "C#": ["C#", "D#", "E", "F#", "G#", "A", "B"],
+    D: ["D", "E", "F", "G", "A", "A#", "C"],
+    "D#": ["D#", "F", "F#", "G#", "A#", "B", "C#"],
+    E: ["E", "F#", "G", "A", "B", "C", "D"],
+    F: ["F", "G", "G#", "A#", "C", "C#", "D#"],
+    "F#": ["F#", "G#", "A", "B", "C#", "D", "E"],
+    G: ["G", "A", "A#", "C", "D", "D#", "F"],
+    "G#": ["G#", "A#", "B", "C#", "D#", "E", "F#"],
+  };
+
+  function scoreKey(scaleNotes) {
+    return scaleNotes.reduce((sum, note) => sum + (noteCounts[note] || 0), 0);
+  }
+
+  let bestKey = null;
+  let bestType = null;
+  let highestScore = -1;
+
+  Object.entries(majorFormulas).forEach(([key, notes]) => {
+    const score = scoreKey(notes);
+    if (score > highestScore) {
+      bestKey = key;
+      bestType = "Major";
+      highestScore = score;
+    }
+  });
+
+  Object.entries(minorFormulas).forEach(([key, notes]) => {
+    const score = scoreKey(notes);
+    if (score > highestScore) {
+      bestKey = key;
+      bestType = "Minor";
+      highestScore = score;
+    }
+  });
+
+  return { key: bestKey, type: bestType };
+}
 
 recordBtn.addEventListener("click", async () => {
-  if (!isRecording) {
+  if (!isListening) {
     try {
-      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-      mediaRecorder = new MediaRecorder(stream);
-      audioChunks = [];
+      // Clear previous session data
+      allDetectedNotes = [];
+      for (const key in noteFrequency) delete noteFrequency[key];
 
-      mediaRecorder.ondataavailable = (event) => {
-        if (event.data.size > 0) {
-          audioChunks.push(event.data);
+      setMode("note"); // Force into note mode
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      audioContext = new (window.AudioContext || window.webkitAudioContext)();
+      sourceNode = audioContext.createMediaStreamSource(stream);
+      analyser = audioContext.createAnalyser();
+      analyser.fftSize = 2048;
+      pitchDetector = PitchDetector.forFloat32Array(2048);
+      buffer = new Float32Array(2048);
+
+      scriptNode = audioContext.createScriptProcessor(2048, 1, 1);
+      scriptNode.onaudioprocess = () => {
+        analyser.getFloatTimeDomainData(buffer);
+        const [pitch, clarity] = pitchDetector.findPitch(
+          buffer,
+          audioContext.sampleRate
+        );
+        if (clarity > 0.9) {
+          const note = pitchToNoteName(pitch);
+          allDetectedNotes.push(note);
+          noteFrequency[note] = (noteFrequency[note] || 0) + 1;
         }
       };
 
-      mediaRecorder.onstop = () => {
-        const audioBlob = new Blob(audioChunks, { type: "audio/webm" });
-        const audioURL = URL.createObjectURL(audioBlob);
-        const audio = new Audio(audioURL);
-        audio.play();
-      };
+      sourceNode.connect(analyser);
+      analyser.connect(scriptNode);
+      scriptNode.connect(audioContext.destination);
 
-      mediaRecorder.start();
-      isRecording = true;
+      isListening = true;
       recordBtn.textContent = "STOP";
     } catch (err) {
-      console.error("Microphone access denied or error:", err);
+      console.error("Mic access failed:", err);
     }
   } else {
-    mediaRecorder.stop();
-    isRecording = false;
+    // Stop audio stream and cleanup
+    scriptNode.disconnect();
+    sourceNode.disconnect();
+    audioContext.close();
+    isListening = false;
     recordBtn.textContent = "REC";
+
+    // Guess key
+    const guess = guessKeyFromNotes(noteFrequency);
+    if (guess.key && guess.type) {
+      selectedNote = guess.key;
+      scaleType = guess.type;
+
+      // Update UI & fretboard
+      updateKeyUI();
+      updateFretboard();
+    }
   }
 });
 
@@ -351,3 +503,234 @@ document.addEventListener("click", () => {
 allDropdowns.forEach((el) =>
   el.addEventListener("click", (e) => e.stopPropagation())
 );
+
+// ------------------ SCALE GENERATION & NOTE HIGHLIGHT ------------------
+
+// Chromatic scales
+const chromaticSharps = [
+  "C",
+  "C#",
+  "D",
+  "D#",
+  "E",
+  "F",
+  "F#",
+  "G",
+  "G#",
+  "A",
+  "A#",
+  "B",
+];
+const chromaticFlats = [
+  "C",
+  "Db",
+  "D",
+  "Eb",
+  "E",
+  "F",
+  "Gb",
+  "G",
+  "Ab",
+  "A",
+  "Bb",
+  "B",
+];
+
+const enharmonicMap = {
+  Db: "C#",
+  Eb: "D#",
+  Gb: "F#",
+  Ab: "G#",
+  Bb: "A#",
+};
+
+// Scale formulas (intervals in semitones)
+const scaleFormulas = {
+  Major: [0, 2, 4, 5, 7, 9, 11],
+  Minor: [0, 2, 3, 5, 7, 8, 10],
+};
+
+// scale formulas for scale view
+const scaleModeFormulas = {
+  ionian: [0, 2, 4, 5, 7, 9, 11], // same as major
+  dorian: [0, 2, 3, 5, 7, 9, 10],
+  phrygian: [0, 1, 3, 5, 7, 8, 10],
+  lydian: [0, 2, 4, 6, 7, 9, 11],
+  mixolydian: [0, 2, 4, 5, 7, 9, 10],
+  aeolian: [0, 2, 3, 5, 7, 8, 10], // same as minor
+  locrian: [0, 1, 3, 5, 6, 8, 10],
+};
+
+// Returns array of notes in the current scale
+function getCurrentScaleNotes() {
+  if (!selectedNote || !scaleType) return [];
+
+  const intervals =
+    scaleType === "Major" ? [2, 2, 1, 2, 2, 2, 1] : [2, 1, 2, 2, 1, 2, 2];
+
+  const chromatic = sharpNotes;
+  const root = enharmonicMap[selectedNote] || selectedNote;
+  const rootIndex = chromatic.indexOf(root);
+
+  if (rootIndex === -1) return [];
+
+  const scaleNotes = [chromatic[rootIndex]];
+  let i = rootIndex;
+
+  intervals.forEach((step) => {
+    i = (i + step) % 12;
+    scaleNotes.push(chromatic[i]);
+  });
+
+  return scaleNotes;
+}
+
+// Highlight matching notes on fretboard
+function highlightFretboardNotes() {
+  const notesInKey = getCurrentScaleNotes();
+  const valid = notesInKey.length > 0;
+
+  document.querySelectorAll(".note-guide").forEach((group) => {
+    const note = group.dataset.note;
+    const inKey = notesInKey.includes(note);
+    const show = valid && inKey;
+
+    const text = group.querySelector("text");
+    const circle = group.querySelector("circle");
+
+    group.style.opacity = show ? "1" : "0";
+    group.style.pointerEvents = show ? "auto" : "none";
+
+    // ✅ COLOR-CODING SECTION
+    if (circle) {
+      if (settingsState["color-coded"] && show) {
+        circle.setAttribute("fill", noteColors[note] || "#fff");
+      } else {
+        circle.setAttribute("fill", "#fff");
+      }
+    }
+
+    // ✅ TEXT LABELS
+    if (text) {
+      if (settingsState["note-names"] && group.style.opacity === "1") {
+        text.style.opacity = "1";
+      } else {
+        text.style.opacity = "0";
+      }
+    }
+  });
+}
+
+function updateFretboard() {
+  if (currentMode !== "note") {
+    keyChangedWhileInactive = true;
+    return;
+  }
+  if (!selectedNote || !scaleType) {
+    highlightFretboardNotes(); // clears fretboard when not ready
+    return;
+  }
+  keyChangedWhileInactive = false;
+  highlightFretboardNotes();
+}
+
+// Trigger update on key/mode changes
+keyGrid.addEventListener("click", updateFretboard);
+accToggle.addEventListener("click", updateFretboard);
+majorBtn.addEventListener("click", updateFretboard);
+minorBtn.addEventListener("click", updateFretboard);
+
+// Also trigger on settings change
+document.querySelectorAll("#settings-dropdown input").forEach((cb) => {
+  cb.addEventListener("change", () => {
+    if (currentMode === "scale") {
+      updateScaleFretboard();
+    } else {
+      updateFretboard();
+    }
+  });
+});
+
+window.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".note-guide").forEach((g) => {
+    g.style.opacity = "0";
+    g.style.pointerEvents = "none";
+    const text = g.querySelector("text");
+    if (text) {
+      text.style.display = "block"; // always render
+      text.style.opacity = "0"; // start hidden
+    }
+  });
+});
+
+// --------- SCALE VIEW ----------
+function getScaleModeNotes() {
+  if (!selectedNote || !currentScaleMode) return [];
+
+  const intervals = scaleModeFormulas[currentScaleMode];
+  if (!intervals) return [];
+
+  const chromatic = sharpNotes;
+  const root = enharmonicMap[selectedNote] || selectedNote;
+  const rootIndex = chromatic.indexOf(root);
+  if (rootIndex === -1) return [];
+
+  return intervals.map((interval) => chromatic[(rootIndex + interval) % 12]);
+}
+
+function highlightScaleModeNotes() {
+  const notesInScale = getScaleModeNotes();
+  const valid = notesInScale.length > 0;
+
+  document.querySelectorAll(".note-guide").forEach((group) => {
+    const note = group.dataset.note;
+    const inScale = notesInScale.includes(note);
+
+    const text = group.querySelector("text");
+    const circle = group.querySelector("circle");
+    const show = valid && inScale;
+
+    group.style.opacity = show ? "1" : "0";
+    group.style.pointerEvents = show ? "auto" : "none";
+
+    // ✅ Color-coded circles
+    if (circle) {
+      if (settingsState["color-coded"] && show) {
+        circle.setAttribute("fill", noteColors[note] || "#fff");
+      } else {
+        circle.setAttribute("fill", "#fff");
+      }
+    }
+
+    // ✅ Color-coded text labels
+    if (text) {
+      if (settingsState["note-names"] && group.style.opacity === "1") {
+        text.style.opacity = "1";
+        text.style.fill =
+          settingsState["color-coded"] && noteColors[note]
+            ? noteColors[note]
+            : "#fff";
+      } else {
+        text.style.opacity = "0";
+      }
+    }
+  });
+}
+
+function updateScaleFretboard() {
+  if (currentMode !== "scale") return;
+  if (!selectedNote || !currentScaleMode) {
+    clearFretboard();
+    return;
+  }
+  highlightScaleModeNotes();
+}
+
+function clearFretboard() {
+  document.querySelectorAll(".note-guide").forEach((group) => {
+    group.style.opacity = "0";
+    group.style.pointerEvents = "none";
+    const text = group.querySelector("text");
+    if (text) text.style.opacity = "0";
+  });
+}

@@ -1,32 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Music Helper</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Music Helper 2000</title>
 
-    <link rel="stylesheet" href="reset.css" />
-    <link rel="stylesheet" href="style.css" />
-    <script src="script.js" defer></script>
-  </head>
+  <link rel="stylesheet" href="reset.css" />
+  <link rel="stylesheet" href="style.css" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Anton&family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Lora:ital,wght@0,400..700;1,400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Notable&family=Oswald:wght@200..700&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Special+Gothic+Expanded+One&display=swap" rel="stylesheet">
+</head>
+
   <body>
+    <h1>MUSIC HELPER 2000!!</h1>
     <div id="app-wrapper">
-      <!-- Chord Boxes (Chord Mode Only) -->
-      <div id="chord-boxes" class="hidden-soft">
-        <div class="chord-box"></div>
-        <div class="chord-box"></div>
-        <div class="chord-box"></div>
-        <div class="chord-box"></div>
-        <div class="chord-box"></div>
-        <div class="chord-box"></div>
-        <div class="chord-box"></div>
-      </div>
-
-      <!-- Main Fretboard Area -->
-      <!-- Main Fretboard Area -->
+  
       <!-- Main Fretboard Area -->
       <div id="fretboard">
-        <svg viewBox="0 0 1500 280" id="fretboard-svg">
+        <svg viewBox="-30 0 1530 280" id="fretboard-svg">
           <rect x="0" y="0" width="1500" height="280" class="fretboard-bg" />
 
           <!-- Strings -->
@@ -39,114 +32,16 @@
             <line x1="0" y1="40" x2="1500" y2="40" />
           </g>
 
-          <!-- Note Guide Circles -->
-          <g class="note-guides">
-            <!-- String Y-positions -->
-            <!-- For each string (y), place a circle at each fret center (x) -->
-            <!-- y = 240 -->
-            <circle cx="50" cy="240" r="6" class="note-guide" />
-            <circle cx="150" cy="240" r="6" class="note-guide" />
-            <circle cx="250" cy="240" r="6" class="note-guide" />
-            <circle cx="350" cy="240" r="6" class="note-guide" />
-            <circle cx="450" cy="240" r="6" class="note-guide" />
-            <circle cx="550" cy="240" r="6" class="note-guide" />
-            <circle cx="650" cy="240" r="6" class="note-guide" />
-            <circle cx="750" cy="240" r="6" class="note-guide" />
-            <circle cx="850" cy="240" r="6" class="note-guide" />
-            <circle cx="950" cy="240" r="6" class="note-guide" />
-            <circle cx="1050" cy="240" r="6" class="note-guide" />
-            <circle cx="1150" cy="240" r="6" class="note-guide" />
-            <circle cx="1250" cy="240" r="6" class="note-guide" />
-            <circle cx="1350" cy="240" r="6" class="note-guide" />
-            <circle cx="1450" cy="240" r="6" class="note-guide" />
-
-            <!-- y = 200 -->
-            <circle cx="50" cy="200" r="6" class="note-guide" />
-            <circle cx="150" cy="200" r="6" class="note-guide" />
-            <circle cx="250" cy="200" r="6" class="note-guide" />
-            <circle cx="350" cy="200" r="6" class="note-guide" />
-            <circle cx="450" cy="200" r="6" class="note-guide" />
-            <circle cx="550" cy="200" r="6" class="note-guide" />
-            <circle cx="650" cy="200" r="6" class="note-guide" />
-            <circle cx="750" cy="200" r="6" class="note-guide" />
-            <circle cx="850" cy="200" r="6" class="note-guide" />
-            <circle cx="950" cy="200" r="6" class="note-guide" />
-            <circle cx="1050" cy="200" r="6" class="note-guide" />
-            <circle cx="1150" cy="200" r="6" class="note-guide" />
-            <circle cx="1250" cy="200" r="6" class="note-guide" />
-            <circle cx="1350" cy="200" r="6" class="note-guide" />
-            <circle cx="1450" cy="200" r="6" class="note-guide" />
-
-            <!-- y = 160 -->
-            <circle cx="50" cy="160" r="6" class="note-guide" />
-            <circle cx="150" cy="160" r="6" class="note-guide" />
-            <circle cx="250" cy="160" r="6" class="note-guide" />
-            <circle cx="350" cy="160" r="6" class="note-guide" />
-            <circle cx="450" cy="160" r="6" class="note-guide" />
-            <circle cx="550" cy="160" r="6" class="note-guide" />
-            <circle cx="650" cy="160" r="6" class="note-guide" />
-            <circle cx="750" cy="160" r="6" class="note-guide" />
-            <circle cx="850" cy="160" r="6" class="note-guide" />
-            <circle cx="950" cy="160" r="6" class="note-guide" />
-            <circle cx="1050" cy="160" r="6" class="note-guide" />
-            <circle cx="1150" cy="160" r="6" class="note-guide" />
-            <circle cx="1250" cy="160" r="6" class="note-guide" />
-            <circle cx="1350" cy="160" r="6" class="note-guide" />
-            <circle cx="1450" cy="160" r="6" class="note-guide" />
-
-            <!-- y = 120 -->
-            <circle cx="50" cy="120" r="6" class="note-guide" />
-            <circle cx="150" cy="120" r="6" class="note-guide" />
-            <circle cx="250" cy="120" r="6" class="note-guide" />
-            <circle cx="350" cy="120" r="6" class="note-guide" />
-            <circle cx="450" cy="120" r="6" class="note-guide" />
-            <circle cx="550" cy="120" r="6" class="note-guide" />
-            <circle cx="650" cy="120" r="6" class="note-guide" />
-            <circle cx="750" cy="120" r="6" class="note-guide" />
-            <circle cx="850" cy="120" r="6" class="note-guide" />
-            <circle cx="950" cy="120" r="6" class="note-guide" />
-            <circle cx="1050" cy="120" r="6" class="note-guide" />
-            <circle cx="1150" cy="120" r="6" class="note-guide" />
-            <circle cx="1250" cy="120" r="6" class="note-guide" />
-            <circle cx="1350" cy="120" r="6" class="note-guide" />
-            <circle cx="1450" cy="120" r="6" class="note-guide" />
-
-            <!-- y = 80 -->
-            <circle cx="50" cy="80" r="6" class="note-guide" />
-            <circle cx="150" cy="80" r="6" class="note-guide" />
-            <circle cx="250" cy="80" r="6" class="note-guide" />
-            <circle cx="350" cy="80" r="6" class="note-guide" />
-            <circle cx="450" cy="80" r="6" class="note-guide" />
-            <circle cx="550" cy="80" r="6" class="note-guide" />
-            <circle cx="650" cy="80" r="6" class="note-guide" />
-            <circle cx="750" cy="80" r="6" class="note-guide" />
-            <circle cx="850" cy="80" r="6" class="note-guide" />
-            <circle cx="950" cy="80" r="6" class="note-guide" />
-            <circle cx="1050" cy="80" r="6" class="note-guide" />
-            <circle cx="1150" cy="80" r="6" class="note-guide" />
-            <circle cx="1250" cy="80" r="6" class="note-guide" />
-            <circle cx="1350" cy="80" r="6" class="note-guide" />
-            <circle cx="1450" cy="80" r="6" class="note-guide" />
-
-            <!-- y = 40 -->
-            <circle cx="50" cy="40" r="6" class="note-guide" />
-            <circle cx="150" cy="40" r="6" class="note-guide" />
-            <circle cx="250" cy="40" r="6" class="note-guide" />
-            <circle cx="350" cy="40" r="6" class="note-guide" />
-            <circle cx="450" cy="40" r="6" class="note-guide" />
-            <circle cx="550" cy="40" r="6" class="note-guide" />
-            <circle cx="650" cy="40" r="6" class="note-guide" />
-            <circle cx="750" cy="40" r="6" class="note-guide" />
-            <circle cx="850" cy="40" r="6" class="note-guide" />
-            <circle cx="950" cy="40" r="6" class="note-guide" />
-            <circle cx="1050" cy="40" r="6" class="note-guide" />
-            <circle cx="1150" cy="40" r="6" class="note-guide" />
-            <circle cx="1250" cy="40" r="6" class="note-guide" />
-            <circle cx="1350" cy="40" r="6" class="note-guide" />
-            <circle cx="1450" cy="40" r="6" class="note-guide" />
+          <g class="markers">
+            <circle cx="250" cy="140" class="fret-mark" />
+            <circle cx="450" cy="140" class="fret-mark" />
+            <circle cx="650" cy="140" class="fret-mark" />
+            <circle cx="850" cy="140" class="fret-mark" />
+            <circle cx="1150" cy="100" class="fret-mark" />
+            <circle cx="1150" cy="180" class="fret-mark" />
+            <circle cx="1350" cy="140" class="fret-mark" />
           </g>
 
-          <!-- Frets -->
           <g class="frets">
             <line x1="0" y1="0" x2="0" y2="280" />
             <line x1="100" y1="0" x2="100" y2="280" />
@@ -165,16 +60,118 @@
             <line x1="1400" y1="0" x2="1400" y2="280" />
           </g>
 
-          <!-- Markers -->
-          <g class="markers">
-            <circle cx="250" cy="140" class="fret-mark" />
-            <circle cx="450" cy="140" class="fret-mark" />
-            <circle cx="650" cy="140" class="fret-mark" />
-            <circle cx="850" cy="140" class="fret-mark" />
-            <circle cx="1150" cy="100" class="fret-mark" />
-            <circle cx="1150" cy="180" class="fret-mark" />
-            <circle cx="1350" cy="140" class="fret-mark" />
-          </g>
+          <!-- Note Guide Circles -->
+          <g class="note-guides">
+           
+      <!-- LOW E STRING -->
+<g class="note-guide" data-note="E" data-string="6" data-fret="0"><circle cx="0" cy="240" r="15" /><text x="0" y="240" text-anchor="middle" alignment-baseline="central" class="note-label">E</text></g>
+<g class="note-guide" data-note="F" data-string="6" data-fret="1"><circle cx="50" cy="240" r="15" /><text x="50" y="240" text-anchor="middle" alignment-baseline="central" class="note-label">F</text></g>
+<g class="note-guide" data-note="F#" data-string="6" data-fret="2"><circle cx="150" cy="240" r="15" /><text x="150" y="240" text-anchor="middle" alignment-baseline="central" class="note-label">F#</text></g>
+<g class="note-guide" data-note="G" data-string="6" data-fret="3"><circle cx="250" cy="240" r="15" /><text x="250" y="240" text-anchor="middle" alignment-baseline="central" class="note-label">G</text></g>
+<g class="note-guide" data-note="G#" data-string="6" data-fret="4"><circle cx="350" cy="240" r="15" /><text x="350" y="240" text-anchor="middle" alignment-baseline="central" class="note-label">G#</text></g>
+<g class="note-guide" data-note="A" data-string="6" data-fret="5"><circle cx="450" cy="240" r="15" /><text x="450" y="240" text-anchor="middle" alignment-baseline="central" class="note-label">A</text></g>
+<g class="note-guide" data-note="A#" data-string="6" data-fret="6"><circle cx="550" cy="240" r="15" /><text x="550" y="240" text-anchor="middle" alignment-baseline="central" class="note-label">A#</text></g>
+<g class="note-guide" data-note="B" data-string="6" data-fret="7"><circle cx="650" cy="240" r="15" /><text x="650" y="240" text-anchor="middle" alignment-baseline="central" class="note-label">B</text></g>
+<g class="note-guide" data-note="C" data-string="6" data-fret="8"><circle cx="750" cy="240" r="15" /><text x="750" y="240" text-anchor="middle" alignment-baseline="central" class="note-label">C</text></g>
+<g class="note-guide" data-note="C#" data-string="6" data-fret="9"><circle cx="850" cy="240" r="15" /><text x="850" y="240" text-anchor="middle" alignment-baseline="central" class="note-label">C#</text></g>
+<g class="note-guide" data-note="D" data-string="6" data-fret="10"><circle cx="950" cy="240" r="15" /><text x="950" y="240" text-anchor="middle" alignment-baseline="central" class="note-label">D</text></g>
+<g class="note-guide" data-note="D#" data-string="6" data-fret="11"><circle cx="1050" cy="240" r="15" /><text x="1050" y="240" text-anchor="middle" alignment-baseline="central" class="note-label">D#</text></g>
+<g class="note-guide" data-note="E" data-string="6" data-fret="12"><circle cx="1150" cy="240" r="15" /><text x="1150" y="240" text-anchor="middle" alignment-baseline="central" class="note-label">E</text></g>
+<g class="note-guide" data-note="F" data-string="6" data-fret="13"><circle cx="1250" cy="240" r="15" /><text x="1250" y="240" text-anchor="middle" alignment-baseline="central" class="note-label">F</text></g>
+<g class="note-guide" data-note="F#" data-string="6" data-fret="14"><circle cx="1350" cy="240" r="15" /><text x="1350" y="240" text-anchor="middle" alignment-baseline="central" class="note-label">F#</text></g>
+<g class="note-guide" data-note="G" data-string="6" data-fret="15"><circle cx="1450" cy="240" r="15" /><text x="1450" y="240" text-anchor="middle" alignment-baseline="central" class="note-label">G</text></g>
+
+
+<!-- A STRING -->
+<g class="note-guide" data-note="A" data-string="5" data-fret="0"><circle cx="0" cy="200" r="15" /><text x="0" y="200" text-anchor="middle" alignment-baseline="central" class="note-label">A</text></g>
+<g class="note-guide" data-note="A#" data-string="5" data-fret="1"><circle cx="50" cy="200" r="15" /><text x="50" y="200" text-anchor="middle" alignment-baseline="central" class="note-label">A#</text></g>
+<g class="note-guide" data-note="B" data-string="5" data-fret="2"><circle cx="150" cy="200" r="15" /><text x="150" y="200" text-anchor="middle" alignment-baseline="central" class="note-label">B</text></g>
+<g class="note-guide" data-note="C" data-string="5" data-fret="3"><circle cx="250" cy="200" r="15" /><text x="250" y="200" text-anchor="middle" alignment-baseline="central" class="note-label">C</text></g>
+<g class="note-guide" data-note="C#" data-string="5" data-fret="4"><circle cx="350" cy="200" r="15" /><text x="350" y="200" text-anchor="middle" alignment-baseline="central" class="note-label">C#</text></g>
+<g class="note-guide" data-note="D" data-string="5" data-fret="5"><circle cx="450" cy="200" r="15" /><text x="450" y="200" text-anchor="middle" alignment-baseline="central" class="note-label">D</text></g>
+<g class="note-guide" data-note="D#" data-string="5" data-fret="6"><circle cx="550" cy="200" r="15" /><text x="550" y="200" text-anchor="middle" alignment-baseline="central" class="note-label">D#</text></g>
+<g class="note-guide" data-note="E" data-string="5" data-fret="7"><circle cx="650" cy="200" r="15" /><text x="650" y="200" text-anchor="middle" alignment-baseline="central" class="note-label">E</text></g>
+<g class="note-guide" data-note="F" data-string="5" data-fret="8"><circle cx="750" cy="200" r="15" /><text x="750" y="200" text-anchor="middle" alignment-baseline="central" class="note-label">F</text></g>
+<g class="note-guide" data-note="F#" data-string="5" data-fret="9"><circle cx="850" cy="200" r="15" /><text x="850" y="200" text-anchor="middle" alignment-baseline="central" class="note-label">F#</text></g>
+<g class="note-guide" data-note="G" data-string="5" data-fret="10"><circle cx="950" cy="200" r="15" /><text x="950" y="200" text-anchor="middle" alignment-baseline="central" class="note-label">G</text></g>
+<g class="note-guide" data-note="G#" data-string="5" data-fret="11"><circle cx="1050" cy="200" r="15" /><text x="1050" y="200" text-anchor="middle" alignment-baseline="central" class="note-label">G#</text></g>
+<g class="note-guide" data-note="A" data-string="5" data-fret="12"><circle cx="1150" cy="200" r="15" /><text x="1150" y="200" text-anchor="middle" alignment-baseline="central" class="note-label">A</text></g>
+<g class="note-guide" data-note="A#" data-string="5" data-fret="13"><circle cx="1250" cy="200" r="15" /><text x="1250" y="200" text-anchor="middle" alignment-baseline="central" class="note-label">A#</text></g>
+<g class="note-guide" data-note="B" data-string="5" data-fret="14"><circle cx="1350" cy="200" r="15" /><text x="1350" y="200" text-anchor="middle" alignment-baseline="central" class="note-label">B</text></g>
+<g class="note-guide" data-note="C" data-string="5" data-fret="15"><circle cx="1450" cy="200" r="15" /><text x="1450" y="200" text-anchor="middle" alignment-baseline="central" class="note-label">C</text></g>
+
+<!-- D STRING -->
+<g class="note-guide" data-note="D" data-string="4" data-fret="0"><circle cx="0" cy="160" r="15" /><text x="0" y="160" text-anchor="middle" alignment-baseline="central" class="note-label">D</text></g>
+<g class="note-guide" data-note="D#" data-string="4" data-fret="1"><circle cx="50" cy="160" r="15" /><text x="50" y="160" text-anchor="middle" alignment-baseline="central" class="note-label">D#</text></g>
+<g class="note-guide" data-note="E" data-string="4" data-fret="2"><circle cx="150" cy="160" r="15" /><text x="150" y="160" text-anchor="middle" alignment-baseline="central" class="note-label">E</text></g>
+<g class="note-guide" data-note="F" data-string="4" data-fret="3"><circle cx="250" cy="160" r="15" /><text x="250" y="160" text-anchor="middle" alignment-baseline="central" class="note-label">F</text></g>
+<g class="note-guide" data-note="F#" data-string="4" data-fret="4"><circle cx="350" cy="160" r="15" /><text x="350" y="160" text-anchor="middle" alignment-baseline="central" class="note-label">F#</text></g>
+<g class="note-guide" data-note="G" data-string="4" data-fret="5"><circle cx="450" cy="160" r="15" /><text x="450" y="160" text-anchor="middle" alignment-baseline="central" class="note-label">G</text></g>
+<g class="note-guide" data-note="G#" data-string="4" data-fret="6"><circle cx="550" cy="160" r="15" /><text x="550" y="160" text-anchor="middle" alignment-baseline="central" class="note-label">G#</text></g>
+<g class="note-guide" data-note="A" data-string="4" data-fret="7"><circle cx="650" cy="160" r="15" /><text x="650" y="160" text-anchor="middle" alignment-baseline="central" class="note-label">A</text></g>
+<g class="note-guide" data-note="A#" data-string="4" data-fret="8"><circle cx="750" cy="160" r="15" /><text x="750" y="160" text-anchor="middle" alignment-baseline="central" class="note-label">A#</text></g>
+<g class="note-guide" data-note="B" data-string="4" data-fret="9"><circle cx="850" cy="160" r="15" /><text x="850" y="160" text-anchor="middle" alignment-baseline="central" class="note-label">B</text></g>
+<g class="note-guide" data-note="C" data-string="4" data-fret="10"><circle cx="950" cy="160" r="15" /><text x="950" y="160" text-anchor="middle" alignment-baseline="central" class="note-label">C</text></g>
+<g class="note-guide" data-note="C#" data-string="4" data-fret="11"><circle cx="1050" cy="160" r="15" /><text x="1050" y="160" text-anchor="middle" alignment-baseline="central" class="note-label">C#</text></g>
+<g class="note-guide" data-note="D" data-string="4" data-fret="12"><circle cx="1150" cy="160" r="15" /><text x="1150" y="160" text-anchor="middle" alignment-baseline="central" class="note-label">D</text></g>
+<g class="note-guide" data-note="D#" data-string="4" data-fret="13"><circle cx="1250" cy="160" r="15" /><text x="1250" y="160" text-anchor="middle" alignment-baseline="central" class="note-label">D#</text></g>
+<g class="note-guide" data-note="E" data-string="4" data-fret="14"><circle cx="1350" cy="160" r="15" /><text x="1350" y="160" text-anchor="middle" alignment-baseline="central" class="note-label">E</text></g>
+<g class="note-guide" data-note="F" data-string="4" data-fret="15"><circle cx="1450" cy="160" r="15" /><text x="1450" y="160" text-anchor="middle" alignment-baseline="central" class="note-label">F</text></g>
+
+<!-- G STRING -->
+<g class="note-guide" data-note="G" data-string="3" data-fret="0"><circle cx="0" cy="120" r="15" /><text x="0" y="120" text-anchor="middle" alignment-baseline="central" class="note-label">G</text></g>
+<g class="note-guide" data-note="G#" data-string="3" data-fret="1"><circle cx="50" cy="120" r="15" /><text x="50" y="120" text-anchor="middle" alignment-baseline="central" class="note-label">G#</text></g>
+<g class="note-guide" data-note="A" data-string="3" data-fret="2"><circle cx="150" cy="120" r="15" /><text x="150" y="120" text-anchor="middle" alignment-baseline="central" class="note-label">A</text></g>
+<g class="note-guide" data-note="A#" data-string="3" data-fret="3"><circle cx="250" cy="120" r="15" /><text x="250" y="120" text-anchor="middle" alignment-baseline="central" class="note-label">A#</text></g>
+<g class="note-guide" data-note="B" data-string="3" data-fret="4"><circle cx="350" cy="120" r="15" /><text x="350" y="120" text-anchor="middle" alignment-baseline="central" class="note-label">B</text></g>
+<g class="note-guide" data-note="C" data-string="3" data-fret="5"><circle cx="450" cy="120" r="15" /><text x="450" y="120" text-anchor="middle" alignment-baseline="central" class="note-label">C</text></g>
+<g class="note-guide" data-note="C#" data-string="3" data-fret="6"><circle cx="550" cy="120" r="15" /><text x="550" y="120" text-anchor="middle" alignment-baseline="central" class="note-label">C#</text></g>
+<g class="note-guide" data-note="D" data-string="3" data-fret="7"><circle cx="650" cy="120" r="15" /><text x="650" y="120" text-anchor="middle" alignment-baseline="central" class="note-label">D</text></g>
+<g class="note-guide" data-note="D#" data-string="3" data-fret="8"><circle cx="750" cy="120" r="15" /><text x="750" y="120" text-anchor="middle" alignment-baseline="central" class="note-label">D#</text></g>
+<g class="note-guide" data-note="E" data-string="3" data-fret="9"><circle cx="850" cy="120" r="15" /><text x="850" y="120" text-anchor="middle" alignment-baseline="central" class="note-label">E</text></g>
+<g class="note-guide" data-note="F" data-string="3" data-fret="10"><circle cx="950" cy="120" r="15" /><text x="950" y="120" text-anchor="middle" alignment-baseline="central" class="note-label">F</text></g>
+<g class="note-guide" data-note="F#" data-string="3" data-fret="11"><circle cx="1050" cy="120" r="15" /><text x="1050" y="120" text-anchor="middle" alignment-baseline="central" class="note-label">F#</text></g>
+<g class="note-guide" data-note="G" data-string="3" data-fret="12"><circle cx="1150" cy="120" r="15" /><text x="1150" y="120" text-anchor="middle" alignment-baseline="central" class="note-label">G</text></g>
+<g class="note-guide" data-note="G#" data-string="3" data-fret="13"><circle cx="1250" cy="120" r="15" /><text x="1250" y="120" text-anchor="middle" alignment-baseline="central" class="note-label">G#</text></g>
+<g class="note-guide" data-note="A" data-string="3" data-fret="14"><circle cx="1350" cy="120" r="15" /><text x="1350" y="120" text-anchor="middle" alignment-baseline="central" class="note-label">A</text></g>
+<g class="note-guide" data-note="A#" data-string="3" data-fret="15"><circle cx="1450" cy="120" r="15" /><text x="1450" y="120" text-anchor="middle" alignment-baseline="central" class="note-label">A#</text></g>
+
+<!-- B STINR -->
+<g class="note-guide" data-note="B" data-string="2" data-fret="0"><circle cx="0" cy="80" r="15" /><text x="0" y="80" text-anchor="middle" alignment-baseline="central" class="note-label">B</text></g>
+<g class="note-guide" data-note="C" data-string="2" data-fret="1"><circle cx="50" cy="80" r="15" /><text x="50" y="80" text-anchor="middle" alignment-baseline="central" class="note-label">C</text></g>
+<g class="note-guide" data-note="C#" data-string="2" data-fret="2"><circle cx="150" cy="80" r="15" /><text x="150" y="80" text-anchor="middle" alignment-baseline="central" class="note-label">C#</text></g>
+<g class="note-guide" data-note="D" data-string="2" data-fret="3"><circle cx="250" cy="80" r="15" /><text x="250" y="80" text-anchor="middle" alignment-baseline="central" class="note-label">D</text></g>
+<g class="note-guide" data-note="D#" data-string="2" data-fret="4"><circle cx="350" cy="80" r="15" /><text x="350" y="80" text-anchor="middle" alignment-baseline="central" class="note-label">D#</text></g>
+<g class="note-guide" data-note="E" data-string="2" data-fret="5"><circle cx="450" cy="80" r="15" /><text x="450" y="80" text-anchor="middle" alignment-baseline="central" class="note-label">E</text></g>
+<g class="note-guide" data-note="F" data-string="2" data-fret="6"><circle cx="550" cy="80" r="15" /><text x="550" y="80" text-anchor="middle" alignment-baseline="central" class="note-label">F</text></g>
+<g class="note-guide" data-note="F#" data-string="2" data-fret="7"><circle cx="650" cy="80" r="15" /><text x="650" y="80" text-anchor="middle" alignment-baseline="central" class="note-label">F#</text></g>
+<g class="note-guide" data-note="G" data-string="2" data-fret="8"><circle cx="750" cy="80" r="15" /><text x="750" y="80" text-anchor="middle" alignment-baseline="central" class="note-label">G</text></g>
+<g class="note-guide" data-note="G#" data-string="2" data-fret="9"><circle cx="850" cy="80" r="15" /><text x="850" y="80" text-anchor="middle" alignment-baseline="central" class="note-label">G#</text></g>
+<g class="note-guide" data-note="A" data-string="2" data-fret="10"><circle cx="950" cy="80" r="15" /><text x="950" y="80" text-anchor="middle" alignment-baseline="central" class="note-label">A</text></g>
+<g class="note-guide" data-note="A#" data-string="2" data-fret="11"><circle cx="1050" cy="80" r="15" /><text x="1050" y="80" text-anchor="middle" alignment-baseline="central" class="note-label">A#</text></g>
+<g class="note-guide" data-note="B" data-string="2" data-fret="12"><circle cx="1150" cy="80" r="15" /><text x="1150" y="80" text-anchor="middle" alignment-baseline="central" class="note-label">B</text></g>
+<g class="note-guide" data-note="C" data-string="2" data-fret="13"><circle cx="1250" cy="80" r="15" /><text x="1250" y="80" text-anchor="middle" alignment-baseline="central" class="note-label">C</text></g>
+<g class="note-guide" data-note="C#" data-string="2" data-fret="14"><circle cx="1350" cy="80" r="15" /><text x="1350" y="80" text-anchor="middle" alignment-baseline="central" class="note-label">C#</text></g>
+<g class="note-guide" data-note="D" data-string="2" data-fret="15"><circle cx="1450" cy="80" r="15" /><text x="1450" y="80" text-anchor="middle" alignment-baseline="central" class="note-label">D</text></g>
+
+<!-- HIGH E STRING -->
+<g class="note-guide" data-note="E" data-string="1" data-fret="0"><circle cx="0" cy="40" r="15" /><text x="0" y="40" text-anchor="middle" alignment-baseline="central" class="note-label">E</text></g>
+<g class="note-guide" data-note="F" data-string="1" data-fret="1"><circle cx="50" cy="40" r="15" /><text x="50" y="40" text-anchor="middle" alignment-baseline="central" class="note-label">F</text></g>
+<g class="note-guide" data-note="F#" data-string="1" data-fret="2"><circle cx="150" cy="40" r="15" /><text x="150" y="40" text-anchor="middle" alignment-baseline="central" class="note-label">F#</text></g>
+<g class="note-guide" data-note="G" data-string="1" data-fret="3"><circle cx="250" cy="40" r="15" /><text x="250" y="40" text-anchor="middle" alignment-baseline="central" class="note-label">G</text></g>
+<g class="note-guide" data-note="G#" data-string="1" data-fret="4"><circle cx="350" cy="40" r="15" /><text x="350" y="40" text-anchor="middle" alignment-baseline="central" class="note-label">G#</text></g>
+<g class="note-guide" data-note="A" data-string="1" data-fret="5"><circle cx="450" cy="40" r="15" /><text x="450" y="40" text-anchor="middle" alignment-baseline="central" class="note-label">A</text></g>
+<g class="note-guide" data-note="A#" data-string="1" data-fret="6"><circle cx="550" cy="40" r="15" /><text x="550" y="40" text-anchor="middle" alignment-baseline="central" class="note-label">A#</text></g>
+<g class="note-guide" data-note="B" data-string="1" data-fret="7"><circle cx="650" cy="40" r="15" /><text x="650" y="40" text-anchor="middle" alignment-baseline="central" class="note-label">B</text></g>
+<g class="note-guide" data-note="C" data-string="1" data-fret="8"><circle cx="750" cy="40" r="15" /><text x="750" y="40" text-anchor="middle" alignment-baseline="central" class="note-label">C</text></g>
+<g class="note-guide" data-note="C#" data-string="1" data-fret="9"><circle cx="850" cy="40" r="15" /><text x="850" y="40" text-anchor="middle" alignment-baseline="central" class="note-label">C#</text></g>
+<g class="note-guide" data-note="D" data-string="1" data-fret="10"><circle cx="950" cy="40" r="15" /><text x="950" y="40" text-anchor="middle" alignment-baseline="central" class="note-label">D</text></g>
+<g class="note-guide" data-note="D#" data-string="1" data-fret="11"><circle cx="1050" cy="40" r="15" /><text x="1050" y="40" text-anchor="middle" alignment-baseline="central" class="note-label">D#</text></g>
+<g class="note-guide" data-note="E" data-string="1" data-fret="12"><circle cx="1150" cy="40" r="15" /><text x="1150" y="40" text-anchor="middle" alignment-baseline="central" class="note-label">E</text></g>
+<g class="note-guide" data-note="F" data-string="1" data-fret="13"><circle cx="1250" cy="40" r="15" /><text x="1250" y="40" text-anchor="middle" alignment-baseline="central" class="note-label">F</text></g>
+<g class="note-guide" data-note="F#" data-string="1" data-fret="14"><circle cx="1350" cy="40" r="15" /><text x="1350" y="40" text-anchor="middle" alignment-baseline="central" class="note-label">F#</text></g>
+<g class="note-guide" data-note="G" data-string="1" data-fret="15"><circle cx="1450" cy="40" r="15" /><text x="1450" y="40" text-anchor="middle" alignment-baseline="central" class="note-label">G</text></g>
+
         </svg>
       </div>
 
@@ -191,11 +188,11 @@
         </button>
 
         <button class="button" id="key-btn">
-          <span class="key-line1">C</span>
-          <span class="key-line2">Major</span>
+          <span class="key-line1">CHOOSE</span>
+          <span class="key-line2">KEY</span>
         </button>
 
-        <button class="button" id="record-btn">REC</button>
+        <button class="button" id="record-btn">RECORD</button>
         <button class="button" id="reset-btn">RESET</button>
         <button class="button" id="settings-btn">SETTINGS</button>
       </footer>
@@ -210,10 +207,6 @@
       <label class="fretboard-item">
         <input type="checkbox" id="scale" />
         Scale
-      </label>
-      <label class="fretboard-item">
-        <input type="checkbox" id="chord" />
-        Chord
       </label>
     </div>
 
@@ -242,42 +235,6 @@
       >
     </div>
 
-    <!-- Chord Type Dropdown (Chord View Only) -->
-    <div class="dropdown-menu hidden" id="chord-type-dropdown">
-      <div class="chord-grid">
-        <label class="fretboard-item"
-          ><input type="checkbox" value="triad" /> Basic Triads</label
-        >
-        <label class="fretboard-item"
-          ><input type="checkbox" value="barre" /> Barre Chords</label
-        >
-        <label class="fretboard-item"
-          ><input type="checkbox" value="7th" /> 7th</label
-        >
-        <label class="fretboard-item"
-          ><input type="checkbox" value="9th" /> 9th</label
-        >
-        <label class="fretboard-item"
-          ><input type="checkbox" value="11th" /> 11th</label
-        >
-        <label class="fretboard-item"
-          ><input type="checkbox" value="13th" /> 13th</label
-        >
-        <label class="fretboard-item"
-          ><input type="checkbox" value="add9" /> Add9</label
-        >
-        <label class="fretboard-item"
-          ><input type="checkbox" value="sus" /> Sus</label
-        >
-        <label class="fretboard-item"
-          ><input type="checkbox" value="shell" /> Shell Voicing</label
-        >
-        <label class="fretboard-item"
-          ><input type="checkbox" value="quartal" /> Quartal Voicing</label
-        >
-      </div>
-    </div>
-
     <!-- Key Selector -->
     <div class="key-selector hidden" id="key-selector">
       <div class="key-header">
@@ -285,8 +242,8 @@
         <button id="accidental-toggle" class="toggle-btn">♭ <> ♯</button>
       </div>
       <div class="key-grid" id="key-grid"></div>
-      <div class="key-footer">
-        <button id="major-btn" class="mode-toggle selected">Major</button>
+      <div class="key-footer" id="scale-type-toggle">
+        <button id="major-btn" class="mode-toggle">Major</button>
         <button id="minor-btn" class="mode-toggle">Minor</button>
       </div>
     </div>
@@ -301,10 +258,9 @@
         <input type="checkbox" id="note-names" />
         Note Labels
       </label>
-      <label class="settings-item">
-        <input type="checkbox" id="scale-degrees" />
-        Scale Degrees
-      </label>
     </div>
-  </body>
+
+<!-- ✅ Then load your script -->
+    <script type ="module" src="script.js"></script>
+</body>
 </html>
